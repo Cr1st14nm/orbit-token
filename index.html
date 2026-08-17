@@ -247,7 +247,173 @@
         align-items: stretch;
       }
     }
-  </style>
+ .meme-zone {
+  position: relative;
+  overflow: hidden;
+  padding: 0 0 90px;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(47,105,255,.18), transparent 30%),
+    radial-gradient(circle at 80% 70%, rgba(128,0,255,.14), transparent 30%);
+}
+
+.space-ticker {
+  width: 100%;
+  padding: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: center;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #fff;
+  background: linear-gradient(
+    90deg,
+    #0c43bd,
+    #6f35e6,
+    #0c43bd
+  );
+  box-shadow: 0 0 30px rgba(74,101,255,.35);
+}
+
+.meme-content {
+  position: relative;
+  z-index: 2;
+  padding-top: 80px;
+}
+
+.meme-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(auto-fit, minmax(250px,1fr));
+  gap: 18px;
+}
+
+.meme-card {
+  padding: 28px;
+  text-align: center;
+  border-radius: 18px;
+  border: 1px solid #315598;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(14,26,56,.95),
+      rgba(5,11,26,.95)
+    );
+  transition: .25s;
+}
+
+.meme-card:hover {
+  transform: translateY(-7px) rotate(-1deg);
+  border-color: #5b91ff;
+  box-shadow: 0 15px 45px rgba(25,90,255,.22);
+}
+
+.meme-icon {
+  font-size: 56px;
+  margin-bottom: 12px;
+}
+
+.meme-card h3 {
+  margin: 8px 0;
+}
+
+.meme-card p {
+  color: #9eacd0;
+  line-height: 1.6;
+}
+
+.elon-disclaimer {
+  max-width: 850px;
+  margin: 35px auto;
+  padding: 15px 20px;
+  text-align: center;
+  color: #7586aa;
+  font-size: 12px;
+  border: 1px dashed #294579;
+  border-radius: 12px;
+}
+
+.mission-screen {
+  max-width: 750px;
+  margin: 50px auto 0;
+  padding: 25px;
+  border-radius: 15px;
+  background: #020805;
+  border: 1px solid #22b968;
+  box-shadow:
+    0 0 30px rgba(33,255,125,.12);
+  font-family: monospace;
+}
+
+.terminal-title {
+  margin-bottom: 20px;
+  color: #50ff95;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+.terminal-line {
+  padding: 7px 0;
+  color: #8fd9af;
+}
+
+.terminal-line.green {
+  color: #55ff9a;
+  font-weight: bold;
+}
+
+.floating-rocket {
+  position: absolute;
+  font-size: 50px;
+  opacity: .55;
+  z-index: 1;
+}
+
+.rocket-one {
+  top: 17%;
+  left: -100px;
+  animation: flyRocket 16s linear infinite;
+}
+
+.rocket-two {
+  top: 65%;
+  left: -140px;
+  animation: flyRocket 25s linear infinite 5s;
+}
+
+.floating-frog {
+  position: absolute;
+  right: 5%;
+  top: 45%;
+  font-size: 65px;
+  opacity: .15;
+  animation: frogFloat 4s ease-in-out infinite;
+}
+
+@keyframes flyRocket {
+  0% {
+    transform:
+      translateX(0)
+      translateY(80px)
+      rotate(45deg);
+  }
+
+  100% {
+    transform:
+      translateX(calc(100vw + 300px))
+      translateY(-300px)
+      rotate(45deg);
+  }
+}
+
+@keyframes frogFloat {
+  0%,100% {
+    transform: translateY(0) rotate(-7deg);
+  }
+
+  50% {
+    transform: translateY(-30px) rotate(7deg);
+  }
+} </style>
 </head>
 
 <body>
@@ -299,7 +465,127 @@
     </div>
   </div>
 </header>
+<section class="meme-zone">
 
+  <div class="space-ticker">
+    🚀 ORBIT &nbsp; • &nbsp;
+    DOG IN SPACE &nbsp; • &nbsp;
+    WEN MARS? &nbsp; • &nbsp;
+    🐸 FROG ONBOARD &nbsp; • &nbsp;
+    1 BILLION ORBIT &nbsp; • &nbsp;
+    ZERO EARTHLY GRAVITY &nbsp; • &nbsp;
+    🚀
+  </div>
+
+  <div class="floating-rocket rocket-one">🚀</div>
+  <div class="floating-rocket rocket-two">🚀</div>
+  <div class="floating-frog">🐸</div>
+
+  <div class="wrap meme-content">
+
+    <div class="section-title">
+      <h2>🚀 ORBIT Meme Control Center</h2>
+      <p>Highly sophisticated interplanetary technology.*</p>
+    </div>
+
+    <div class="meme-grid">
+
+      <div class="meme-card">
+        <div class="meme-icon">🐕‍🚀</div>
+        <h3>Mission Commander</h3>
+        <p>
+          Professionally trained in snacks,
+          orbital mechanics and pressing random buttons.
+        </p>
+      </div>
+
+      <div class="meme-card">
+        <div class="meme-icon">🐸</div>
+        <h3>Frog Division</h3>
+        <p>
+          Pepe has entered the spacecraft.
+          Nobody knows who gave him clearance.
+        </p>
+      </div>
+
+      <div class="meme-card">
+        <div class="meme-icon">🚀</div>
+        <h3>Rocket Department</h3>
+        <p>
+          Destination: Mars.<br>
+          Estimated arrival: eventually.
+        </p>
+      </div>
+
+      <div class="meme-card">
+        <div class="meme-icon">🌕</div>
+        <h3>Moon Research</h3>
+        <p>
+          Scientists continue investigating
+          whether "wen moon?" is a valid flight plan.
+        </p>
+      </div>
+
+      <div class="meme-card">
+        <div class="meme-icon">👽</div>
+        <h3>Alien Relations</h3>
+        <p>
+          First contact pending.
+          Marketing department already prepared stickers.
+        </p>
+      </div>
+
+      <div class="meme-card">
+        <div class="meme-icon">🛰️</div>
+        <h3>Space Internet</h3>
+        <p>
+          Signal strength: ███████░░<br>
+          Probably enough for memes.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="elon-disclaimer">
+      🚀 Inspired by internet space culture.
+      ORBIT is independent and is not affiliated with,
+      sponsored by, or endorsed by Elon Musk, SpaceX or affiliated companies.
+    </div>
+
+    <div class="mission-screen">
+
+      <div class="terminal-title">
+        ORBIT MISSION COMPUTER
+      </div>
+
+      <div class="terminal-line">
+        > INITIALIZING DOGE-ASTRONAUT_PROTOCOL...
+      </div>
+
+      <div class="terminal-line">
+        > FROG_MODULE ............... ONLINE 🐸
+      </div>
+
+      <div class="terminal-line">
+        > ROCKET_ENGINE .............. READY 🚀
+      </div>
+
+      <div class="terminal-line">
+        > MEME_RESERVES .............. 100%
+      </div>
+
+      <div class="terminal-line">
+        > GRAVITY .................... OPTIONAL
+      </div>
+
+      <div class="terminal-line green">
+        > MISSION STATUS: LET'S ORBIT
+      </div>
+
+    </div>
+
+  </div>
+</section>
 <main>
 
 <section id="token">
