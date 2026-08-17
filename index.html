@@ -12,170 +12,475 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
+      color: #fff;
       background:
-        radial-gradient(circle at 50% 0%, #17264c 0%, #080d1b 45%, #03050b 100%);
-      color: #ffffff;
-      min-height: 100vh;
+        radial-gradient(circle at top, #162c5e 0%, #071023 43%, #02040a 100%);
     }
 
-    .container {
-      max-width: 1000px;
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .wrap {
+      width: min(1100px, 92%);
       margin: auto;
-      padding: 70px 24px;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(3, 7, 16, .88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #1c315b;
+    }
+
+    nav .wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 70px;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: 4px;
+      font-size: 22px;
+    }
+
+    .navlinks {
+      display: flex;
+      gap: 24px;
+      color: #aab9dd;
+      font-size: 14px;
+    }
+
+    .hero {
+      min-height: 720px;
+      display: grid;
+      place-items: center;
       text-align: center;
+      padding: 70px 20px;
     }
 
     .logo {
-      width: 180px;
-      height: 180px;
-      margin: 0 auto 25px;
+      width: 250px;
+      height: 250px;
+      object-fit: cover;
       border-radius: 50%;
-      border: 3px solid #8ba7ff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 70px;
-      background: rgba(255,255,255,0.05);
-      box-shadow: 0 0 45px rgba(86,120,255,0.35);
+      border: 3px solid #4388ff;
+      box-shadow:
+        0 0 30px rgba(38, 111, 255, .6),
+        0 0 80px rgba(38, 111, 255, .25);
     }
 
     h1 {
-      font-size: 64px;
-      margin: 0;
-      letter-spacing: 8px;
+      font-size: clamp(56px, 9vw, 100px);
+      margin: 30px 0 8px;
+      letter-spacing: 12px;
+      line-height: 1;
     }
 
-    .subtitle {
-      color: #9fb3ff;
-      font-size: 20px;
-      margin-top: 12px;
+    .tagline {
+      color: #74a5ff;
+      font-size: 21px;
     }
 
     .intro {
       max-width: 720px;
-      margin: 35px auto;
-      color: #cbd3e8;
-      line-height: 1.7;
+      margin: 28px auto;
+      line-height: 1.8;
+      color: #c2cce3;
       font-size: 17px;
     }
 
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 22px;
+      border-radius: 10px;
+      font-weight: 700;
+      border: 1px solid #3768be;
+      background: #1262ef;
+    }
+
+    .btn.secondary {
+      background: transparent;
+      color: #c8d5f5;
+    }
+
+    section {
+      padding: 85px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-title h2 {
+      font-size: 38px;
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      color: #8292b5;
+    }
+
     .card {
-      margin: 45px auto 0;
-      padding: 30px;
-      max-width: 760px;
-      text-align: left;
-      border: 1px solid #27375f;
+      background: rgba(10, 18, 38, .82);
+      border: 1px solid #20365f;
       border-radius: 18px;
-      background: rgba(13,22,43,0.8);
+      padding: 28px;
     }
 
-    .card h2 {
-      margin-top: 0;
-      color: #a9baff;
+    .token-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 16px;
     }
 
-    .row {
-      padding: 14px 0;
-      border-bottom: 1px solid #26324c;
-    }
-
-    .row:last-child {
-      border-bottom: none;
-    }
-
-    .label {
-      color: #8995ad;
+    .info-label {
       display: block;
-      font-size: 13px;
-      margin-bottom: 5px;
+      color: #7d8cad;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
     }
 
-    .contract {
+    .info-value {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .contract-box {
+      margin-top: 20px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      padding: 18px;
+      border: 1px solid #294a82;
+      border-radius: 12px;
+      background: #050b18;
+    }
+
+    #contract {
       word-break: break-all;
+      flex: 1;
       font-family: monospace;
-      color: #ffffff;
+      color: #cbd9ff;
     }
 
-    .notice {
-      margin-top: 35px;
-      color: #7f8ba5;
-      font-size: 13px;
+    .copy {
+      cursor: pointer;
+      border: 0;
+      padding: 10px 14px;
+      border-radius: 8px;
+      background: #1b67e8;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    .tokenomics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .allocation {
+      border-left: 4px solid #3278f5;
+    }
+
+    .allocation strong {
+      display: block;
+      font-size: 26px;
+      margin-top: 8px;
+    }
+
+    .allocation span {
+      color: #8fa1c7;
+    }
+
+    .security {
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+      line-height: 1.8;
+      color: #aebbd8;
     }
 
     footer {
-      margin-top: 70px;
-      color: #66728b;
-      font-size: 13px;
+      text-align: center;
+      color: #647393;
+      border-top: 1px solid #172642;
+      padding: 35px 20px;
+    }
+
+    @media (max-width: 650px) {
+      .navlinks {
+        display: none;
+      }
+
+      .logo {
+        width: 190px;
+        height: 190px;
+      }
+
+      .contract-box {
+        flex-direction: column;
+        align-items: stretch;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <main class="container">
+<nav>
+  <div class="wrap">
+    <div class="brand">ORBIT</div>
 
-    <div class="logo">🐕‍🚀</div>
+    <div class="navlinks">
+      <a href="#token">Token</a>
+      <a href="#tokenomics">Tokenomics</a>
+      <a href="#contract-section">Contract</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div>
+    <img
+      src="orbit-logo.png"
+      alt="ORBIT astronaut mascot"
+      class="logo"
+    >
 
     <h1>ORBIT</h1>
 
-    <div class="subtitle">
+    <div class="tagline">
       Exploring the decentralized frontier
     </div>
 
     <p class="intro">
       ORBIT is an ERC-20 token deployed on Robinhood Chain,
       with a fixed supply and an initial allocation defined
-      by its smart contract across ecosystem categories.
+      directly by its verified smart contract.
     </p>
 
-    <section class="card">
+    <div class="buttons">
+      <a
+        class="btn"
+        href="https://robinhoodchain.blockscout.com/address/0x3D42d61616EA2E48CA4Bd6a9e15BC443d1F76dE4"
+        target="_blank"
+      >
+        View on Blockscout
+      </a>
+
+      <a class="btn secondary" href="#tokenomics">
+        Tokenomics
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section id="token">
+  <div class="wrap">
+
+    <div class="section-title">
       <h2>Token Information</h2>
+      <p>Official on-chain information for ORBIT.</p>
+    </div>
 
-      <div class="row">
-        <span class="label">Token</span>
-        ORBIT
+    <div class="card">
+
+      <div class="token-info">
+
+        <div>
+          <span class="info-label">Name</span>
+          <span class="info-value">ORBIT</span>
+        </div>
+
+        <div>
+          <span class="info-label">Symbol</span>
+          <span class="info-value">ORBIT</span>
+        </div>
+
+        <div>
+          <span class="info-label">Network</span>
+          <span class="info-value">Robinhood Chain</span>
+        </div>
+
+        <div>
+          <span class="info-label">Standard</span>
+          <span class="info-value">ERC-20</span>
+        </div>
+
+        <div>
+          <span class="info-label">Total Supply</span>
+          <span class="info-value">1,000,000,000 ORBIT</span>
+        </div>
+
+        <div>
+          <span class="info-label">Contract Status</span>
+          <span class="info-value">Verified ✓</span>
+        </div>
+
       </div>
 
-      <div class="row">
-        <span class="label">Symbol</span>
-        ORBIT
+    </div>
+  </div>
+</section>
+
+
+<section id="tokenomics">
+  <div class="wrap">
+
+    <div class="section-title">
+      <h2>Tokenomics</h2>
+      <p>Initial allocation encoded into the ORBIT smart contract.</p>
+    </div>
+
+    <div class="tokenomics">
+
+      <div class="card allocation">
+        <span>Liquidity</span>
+        <strong>250M</strong>
+        <span>25%</span>
       </div>
 
-      <div class="row">
-        <span class="label">Network</span>
-        Robinhood Chain
+      <div class="card allocation">
+        <span>Reserve</span>
+        <strong>200M</strong>
+        <span>20%</span>
       </div>
 
-      <div class="row">
-        <span class="label">Standard</span>
-        ERC-20
+      <div class="card allocation">
+        <span>Community</span>
+        <strong>150M</strong>
+        <span>15%</span>
       </div>
 
-      <div class="row">
-        <span class="label">Total Supply</span>
-        1,000,000,000 ORBIT
+      <div class="card allocation">
+        <span>Ecosystem</span>
+        <strong>100M</strong>
+        <span>10%</span>
       </div>
 
-      <div class="row">
-        <span class="label">Contract Address</span>
-        <span class="contract">
+      <div class="card allocation">
+        <span>Marketing</span>
+        <strong>100M</strong>
+        <span>10%</span>
+      </div>
+
+      <div class="card allocation">
+        <span>Vesting</span>
+        <strong>100M</strong>
+        <span>10%</span>
+      </div>
+
+      <div class="card allocation">
+        <span>Founder</span>
+        <strong>50M</strong>
+        <span>5%</span>
+      </div>
+
+      <div class="card allocation">
+        <span>Partnerships</span>
+        <strong>50M</strong>
+        <span>5%</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<section id="contract-section">
+  <div class="wrap">
+
+    <div class="section-title">
+      <h2>Official Contract</h2>
+      <p>Always verify this address before interacting with ORBIT.</p>
+    </div>
+
+    <div class="card">
+
+      <div class="contract-box">
+        <span id="contract">
           0x3D42d61616EA2E48CA4Bd6a9e15BC443d1F76dE4
         </span>
-      </div>
-    </section>
 
-    <p class="notice">
-      Always verify the contract address before interacting with the token.
+        <button class="copy" onclick="copyContract()">
+          Copy
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<section>
+  <div class="wrap">
+
+    <div class="section-title">
+      <h2>Transparency</h2>
+    </div>
+
+    <p class="security">
+      ORBIT's smart contract source code is publicly verified on the
+      Robinhood Chain Blockscout explorer. Token supply and the initial
+      allocation are defined by the deployed contract and can be inspected
+      directly on-chain.
     </p>
 
-    <footer>
-      ORBIT • Robinhood Chain
-    </footer>
+  </div>
+</section>
 
-  </main>
+</main>
+
+
+<footer>
+  ORBIT • Robinhood Chain
+  <br><br>
+  Always verify the official contract address.
+</footer>
+
+
+<script>
+  function copyContract() {
+    const address =
+      "0x3D42d61616EA2E48CA4Bd6a9e15BC443d1F76dE4";
+
+    navigator.clipboard.writeText(address);
+
+    const button = document.querySelector(".copy");
+    button.innerText = "Copied ✓";
+
+    setTimeout(() => {
+      button.innerText = "Copy";
+    }, 1800);
+  }
+</script>
 
 </body>
 </html>
