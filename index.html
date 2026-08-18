@@ -15,177 +15,7 @@
     content="ORBIT — Dog in Space. Official ORBIT project website."
   >
 
- /* ===================================== */
-/* ☄️ SHOOTING STARS */
-/* ===================================== */
-
-.shooting-star-fx {
-  position: fixed;
-  top: -80px;
-  left: -100px;
-
-  z-index: 5;
-  pointer-events: none;
-  user-select: none;
-
-  width: 3px;
-  height: 3px;
-
-  border-radius: 50%;
-
-  background: white;
-
-  box-shadow:
-    0 0 6px #ffffff,
-    0 0 12px #65cfff,
-    0 0 22px #258cff;
-
-  animation:
-    shootingStarFly
-    linear
-    forwards;
-}
-
-.shooting-star-fx::after {
-  content: "";
-
-  position: absolute;
-
-  width: 100px;
-  height: 2px;
-
-  right: 0;
-  top: 0;
-
-  transform-origin: right center;
-
-  background:
-    linear-gradient(
-      to left,
-      rgba(255,255,255,0.95),
-      rgba(75,190,255,0.6),
-      transparent
-    );
-}
-
-@keyframes shootingStarFly {
-
-  0% {
-    transform:
-      translate3d(0,0,0)
-      rotate(-35deg);
-
-    opacity: 0;
-  }
-
-  8% {
-    opacity: 1;
-  }
-
-  80% {
-    opacity: 1;
-  }
-
-  100% {
-    transform:
-      translate3d(
-        130vw,
-        80vh,
-        0
-      )
-      rotate(-35deg);
-
-    opacity: 0;
-  }
-}
-
-
-/* ===================================== */
-/* 🛸 RANDOM UFO */
-/* ===================================== */
-
-.ufo-fx {
-  position: fixed;
-
-  left: -150px;
-
-  z-index: 5;
-
-  pointer-events: none;
-  user-select: none;
-
-  line-height: 1;
-
-  filter:
-    drop-shadow(
-      0 0 8px
-      rgba(83,255,220,0.9)
-    )
-    drop-shadow(
-      0 0 20px
-      rgba(80,110,255,0.8)
-    );
-
-  animation:
-    ufoFly
-    linear
-    forwards;
-}
-
-@keyframes ufoFly {
-
-  0% {
-    transform:
-      translate3d(
-        -150px,
-        0,
-        0
-      )
-      rotate(-4deg);
-
-    opacity: 0;
-  }
-
-  7% {
-    opacity: 1;
-  }
-
-  45% {
-    transform:
-      translate3d(
-        55vw,
-        -25px,
-        0
-      )
-      rotate(4deg);
-  }
-
-  55% {
-    transform:
-      translate3d(
-        65vw,
-        18px,
-        0
-      )
-      rotate(-3deg);
-  }
-
-  90% {
-    opacity: 1;
-  }
-
-  100% {
-    transform:
-      translate3d(
-        125vw,
-        -15px,
-        0
-      )
-      rotate(3deg);
-
-    opacity: 0;
-  }
-} <style>
+  <style>
 
     * {
       box-sizing: border-box;
@@ -249,7 +79,7 @@
 
 
     /* ===================================== */
-    /* COPY CONTRACT MESSAGE */
+    /* NOTIFICATION */
     /* ===================================== */
 
     #message {
@@ -270,17 +100,12 @@
       background: #061325;
       color: white;
 
-      font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
+      font-family: Arial, Helvetica, sans-serif;
       font-size: 14px;
       font-weight: bold;
 
       box-shadow:
-        0 0 25px
-        rgba(31, 169, 255, 0.45);
+        0 0 25px rgba(31,169,255,0.45);
 
       opacity: 0;
       pointer-events: none;
@@ -302,11 +127,10 @@
 
 
     /* ===================================== */
-    /* 🚀 FLYING ROCKETS */
+    /* 🚀 ROCKETS */
     /* ===================================== */
 
     .rocket-fx {
-
       position: fixed;
 
       bottom: -120px;
@@ -314,7 +138,6 @@
       z-index: 6;
 
       pointer-events: none;
-
       user-select: none;
 
       line-height: 1;
@@ -326,50 +149,34 @@
       filter:
         drop-shadow(
           0 0 7px
-          rgba(61, 173, 255, 0.95)
+          rgba(61,173,255,0.95)
         )
         drop-shadow(
           0 0 15px
-          rgba(255, 130, 40, 0.8)
+          rgba(255,130,40,0.8)
         );
 
-      animation-name:
-        orbitRocketFly;
-
-      animation-timing-function:
-        linear;
-
-      animation-fill-mode:
-        forwards;
+      animation-name: orbitRocketFly;
+      animation-timing-function: linear;
+      animation-fill-mode: forwards;
     }
 
 
     @keyframes orbitRocketFly {
 
       0% {
-
         transform:
-          translate3d(
-            0,
-            0,
-            0
-          )
+          translate3d(0,0,0)
           rotate(-45deg);
 
         opacity: 0;
-
       }
-
 
       8% {
-
         opacity: 1;
-
       }
 
-
       50% {
-
         transform:
           translate3d(
             var(--drift-half),
@@ -379,19 +186,13 @@
           rotate(-45deg);
 
         opacity: 1;
-
       }
-
 
       88% {
-
         opacity: 1;
-
       }
 
-
       100% {
-
         transform:
           translate3d(
             var(--drift),
@@ -401,23 +202,189 @@
           rotate(-45deg);
 
         opacity: 0;
-
       }
 
     }
 
 
-    /*
-      Accessibility:
-      if the visitor has reduced-motion
-      enabled, rockets are disabled.
-    */
+    /* ===================================== */
+    /* ☄️ SHOOTING STARS */
+    /* ===================================== */
 
-    @media (
-      prefers-reduced-motion: reduce
-    ) {
+    .shooting-star-fx {
+      position: fixed;
 
-      .rocket-fx {
+      z-index: 5;
+
+      pointer-events: none;
+      user-select: none;
+
+      width: 4px;
+      height: 4px;
+
+      border-radius: 50%;
+
+      background: #ffffff;
+
+      box-shadow:
+        0 0 6px #ffffff,
+        0 0 12px #65cfff,
+        0 0 24px #258cff;
+
+      animation-name: shootingStarFly;
+      animation-timing-function: linear;
+      animation-fill-mode: forwards;
+    }
+
+
+    .shooting-star-fx::after {
+      content: "";
+
+      position: absolute;
+
+      right: 0;
+      top: 1px;
+
+      width: 110px;
+      height: 2px;
+
+      background:
+        linear-gradient(
+          to left,
+          rgba(255,255,255,0.95),
+          rgba(79,196,255,0.65),
+          transparent
+        );
+
+      transform-origin: right center;
+    }
+
+
+    @keyframes shootingStarFly {
+
+      0% {
+        transform:
+          translate3d(0,0,0)
+          rotate(-35deg);
+
+        opacity: 0;
+      }
+
+      7% {
+        opacity: 1;
+      }
+
+      82% {
+        opacity: 1;
+      }
+
+      100% {
+        transform:
+          translate3d(
+            135vw,
+            82vh,
+            0
+          )
+          rotate(-35deg);
+
+        opacity: 0;
+      }
+
+    }
+
+
+    /* ===================================== */
+    /* 🛸 UFOs */
+    /* ===================================== */
+
+    .ufo-fx {
+      position: fixed;
+
+      left: -160px;
+
+      z-index: 5;
+
+      pointer-events: none;
+      user-select: none;
+
+      line-height: 1;
+
+      will-change:
+        transform,
+        opacity;
+
+      filter:
+        drop-shadow(
+          0 0 8px
+          rgba(83,255,220,0.95)
+        )
+        drop-shadow(
+          0 0 20px
+          rgba(80,110,255,0.85)
+        );
+
+      animation-name: ufoFly;
+      animation-timing-function: linear;
+      animation-fill-mode: forwards;
+    }
+
+
+    @keyframes ufoFly {
+
+      0% {
+        transform:
+          translate3d(-160px,0,0)
+          rotate(-4deg);
+
+        opacity: 0;
+      }
+
+      7% {
+        opacity: 1;
+      }
+
+      35% {
+        transform:
+          translate3d(45vw,-18px,0)
+          rotate(3deg);
+      }
+
+      55% {
+        transform:
+          translate3d(70vw,20px,0)
+          rotate(-3deg);
+      }
+
+      75% {
+        transform:
+          translate3d(95vw,-12px,0)
+          rotate(3deg);
+      }
+
+      90% {
+        opacity: 1;
+      }
+
+      100% {
+        transform:
+          translate3d(130vw,5px,0)
+          rotate(-2deg);
+
+        opacity: 0;
+      }
+
+    }
+
+
+    /* ===================================== */
+    /* REDUCED MOTION */
+    /* ===================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .rocket-fx,
+      .shooting-star-fx,
+      .ufo-fx {
         display: none !important;
       }
 
@@ -435,10 +402,8 @@
   >
 
     <!--
-      COMPLETE ORBIT DESIGN
-
-      Keep orbit-site.png in the same
-      GitHub folder as index.html.
+      KEEP orbit-site.png IN THE SAME
+      FOLDER AS index.html
     -->
 
     <img
@@ -450,13 +415,9 @@
     >
 
 
-
     <!-- ====================================== -->
-    <!-- TOP NAVIGATION -->
+    <!-- MENU -->
     <!-- ====================================== -->
-
-
-    <!-- HOME -->
 
     <button
       type="button"
@@ -464,7 +425,6 @@
       aria-label="Home"
       title="Home"
       onclick="goToSection('home')"
-
       style="
         left:29.7%;
         top:0.55%;
@@ -474,16 +434,12 @@
     ></button>
 
 
-
-    <!-- TOKEN -->
-
     <button
       type="button"
       class="click-area"
       aria-label="Token"
       title="Token"
       onclick="goToSection('token')"
-
       style="
         left:35.4%;
         top:0.55%;
@@ -493,16 +449,12 @@
     ></button>
 
 
-
-    <!-- TOKENOMICS -->
-
     <button
       type="button"
       class="click-area"
       aria-label="Tokenomics"
       title="Tokenomics"
       onclick="goToSection('tokenomics')"
-
       style="
         left:40.4%;
         top:0.55%;
@@ -512,16 +464,12 @@
     ></button>
 
 
-
-    <!-- MEME CENTER -->
-
     <button
       type="button"
       class="click-area"
       aria-label="Meme Center"
       title="Meme Center"
       onclick="goToSection('meme')"
-
       style="
         left:49.3%;
         top:0.55%;
@@ -531,16 +479,12 @@
     ></button>
 
 
-
-    <!-- ROADMAP -->
-
     <button
       type="button"
       class="click-area"
       aria-label="Roadmap"
       title="Roadmap"
       onclick="goToSection('roadmap')"
-
       style="
         left:59%;
         top:0.55%;
@@ -550,16 +494,12 @@
     ></button>
 
 
-
-    <!-- CONTRACT -->
-
     <button
       type="button"
       class="click-area"
       aria-label="Contract"
       title="Official Contract"
       onclick="goToSection('contract')"
-
       style="
         left:66.5%;
         top:0.55%;
@@ -569,16 +509,12 @@
     ></button>
 
 
-
-    <!-- FAQ / SECURITY -->
-
     <button
       type="button"
       class="click-area"
       aria-label="FAQ and Security"
       title="FAQ / Security"
       onclick="goToSection('security')"
-
       style="
         left:73.3%;
         top:0.55%;
@@ -588,22 +524,18 @@
     ></button>
 
 
-
     <!-- ====================================== -->
-    <!-- TOP BLOCKSCOUT BUTTON -->
+    <!-- BLOCKSCOUT TOP -->
     <!-- ====================================== -->
 
     <a
       class="click-area"
-
       aria-label="View ORBIT on Blockscout"
-
       title="View on Blockscout"
 
       href="https://robinhoodchain.blockscout.com/address/0x3D42d61616EA2E48CA4Bd6a9e15BC443d1F76dE4"
 
       target="_blank"
-
       rel="noopener noreferrer"
 
       style="
@@ -615,22 +547,18 @@
     ></a>
 
 
-
     <!-- ====================================== -->
-    <!-- HERO BLOCKSCOUT BUTTON -->
+    <!-- HERO BLOCKSCOUT -->
     <!-- ====================================== -->
 
     <a
       class="click-area"
-
       aria-label="View ORBIT contract on Blockscout"
-
       title="View Contract on Blockscout"
 
       href="https://robinhoodchain.blockscout.com/address/0x3D42d61616EA2E48CA4Bd6a9e15BC443d1F76dE4"
 
       target="_blank"
-
       rel="noopener noreferrer"
 
       style="
@@ -642,20 +570,15 @@
     ></a>
 
 
-
     <!-- ====================================== -->
     <!-- HERO COPY CONTRACT -->
     <!-- ====================================== -->
 
     <button
       type="button"
-
       class="click-area"
-
       aria-label="Copy ORBIT contract address"
-
       title="Copy Contract"
-
       onclick="copyContract()"
 
       style="
@@ -667,20 +590,15 @@
     ></button>
 
 
-
     <!-- ====================================== -->
-    <!-- CONTRACT PANEL COPY BUTTON -->
+    <!-- CONTRACT COPY -->
     <!-- ====================================== -->
 
     <button
       type="button"
-
       class="click-area"
-
       aria-label="Copy official ORBIT contract"
-
       title="Copy Official Contract"
-
       onclick="copyContract()"
 
       style="
@@ -692,22 +610,18 @@
     ></button>
 
 
-
     <!-- ====================================== -->
-    <!-- CONTRACT PANEL BLOCKSCOUT -->
+    <!-- CONTRACT BLOCKSCOUT -->
     <!-- ====================================== -->
 
     <a
       class="click-area"
-
       aria-label="Verify ORBIT contract on Blockscout"
-
       title="Verify on Blockscout"
 
       href="https://robinhoodchain.blockscout.com/address/0x3D42d61616EA2E48CA4Bd6a9e15BC443d1F76dE4"
 
       target="_blank"
-
       rel="noopener noreferrer"
 
       style="
@@ -719,22 +633,18 @@
     ></a>
 
 
-
     <!-- ====================================== -->
     <!-- FOOTER BLOCKSCOUT -->
     <!-- ====================================== -->
 
     <a
       class="click-area"
-
       aria-label="ORBIT Blockscout"
-
       title="Blockscout"
 
       href="https://robinhoodchain.blockscout.com/address/0x3D42d61616EA2E48CA4Bd6a9e15BC443d1F76dE4"
 
       target="_blank"
-
       rel="noopener noreferrer"
 
       style="
@@ -746,22 +656,18 @@
     ></a>
 
 
-
     <!-- ====================================== -->
     <!-- FOOTER GITHUB -->
     <!-- ====================================== -->
 
     <a
       class="click-area"
-
       aria-label="ORBIT GitHub"
-
       title="GitHub"
 
       href="https://github.com/Cr1st14nm/orbit-token"
 
       target="_blank"
-
       rel="noopener noreferrer"
 
       style="
@@ -773,16 +679,13 @@
     ></a>
 
 
-
     <!-- ====================================== -->
     <!-- FOOTER EMAIL -->
     <!-- ====================================== -->
 
     <a
       class="click-area"
-
       aria-label="Contact ORBIT"
-
       title="Email ORBIT"
 
       href="mailto:orbitfoundation@protonmail.com"
@@ -798,11 +701,6 @@
   </div>
 
 
-
-  <!-- ====================================== -->
-  <!-- NOTIFICATION -->
-  <!-- ====================================== -->
-
   <div
     id="message"
     role="status"
@@ -812,40 +710,29 @@
   </div>
 
 
-
   <script>
 
     /* ===================================== */
-    /* OFFICIAL ORBIT CONTRACT */
+    /* OFFICIAL CONTRACT */
     /* ===================================== */
 
     const CONTRACT =
       "0x3D42d61616EA2E48CA4Bd6a9e15BC443d1F76dE4";
 
 
-
     /* ===================================== */
-    /* SITE SECTIONS */
+    /* NAVIGATION POSITIONS */
     /* ===================================== */
 
     const sections = {
-
       home: 0,
-
       meme: 0.34,
-
       token: 0.625,
-
       tokenomics: 0.625,
-
       contract: 0.625,
-
       security: 0.765,
-
       roadmap: 0.84
-
     };
-
 
 
     /* ===================================== */
@@ -855,40 +742,26 @@
     function showMessage(text) {
 
       const message =
-        document.getElementById(
-          "message"
-        );
+        document.getElementById("message");
 
+      message.textContent = text;
 
-      message.textContent =
-        text;
-
-
-      message.classList.add(
-        "show"
-      );
-
+      message.classList.add("show");
 
       clearTimeout(
         window.orbitMessageTimer
       );
 
-
       window.orbitMessageTimer =
         setTimeout(
           function () {
-
             message.classList.remove(
               "show"
             );
-
           },
-
           1700
         );
-
     }
-
 
 
     /* ===================================== */
@@ -907,39 +780,27 @@
           await navigator.clipboard
             .writeText(CONTRACT);
 
-        }
+        } else {
 
-        else {
-
-          fallbackCopy(
-            CONTRACT
-          );
+          fallbackCopy(CONTRACT);
 
         }
-
 
         showMessage(
           "Contract copied 🚀"
         );
 
-      }
-
-      catch (error) {
+      } catch (error) {
 
         try {
 
-          fallbackCopy(
-            CONTRACT
-          );
-
+          fallbackCopy(CONTRACT);
 
           showMessage(
             "Contract copied 🚀"
           );
 
-        }
-
-        catch (fallbackError) {
+        } catch (fallbackError) {
 
           showMessage(
             "Copy failed"
@@ -952,11 +813,6 @@
     }
 
 
-
-    /* ===================================== */
-    /* COPY FALLBACK */
-    /* ===================================== */
-
     function fallbackCopy(text) {
 
       const textarea =
@@ -964,16 +820,12 @@
           "textarea"
         );
 
-
-      textarea.value =
-        text;
-
+      textarea.value = text;
 
       textarea.setAttribute(
         "readonly",
         ""
       );
-
 
       textarea.style.position =
         "fixed";
@@ -984,42 +836,32 @@
       textarea.style.pointerEvents =
         "none";
 
-
       document.body.appendChild(
         textarea
       );
 
-
       textarea.select();
-
 
       textarea.setSelectionRange(
         0,
         textarea.value.length
       );
 
-
       const successful =
         document.execCommand(
           "copy"
         );
 
-
       document.body.removeChild(
         textarea
       );
 
-
       if (!successful) {
-
         throw new Error(
           "Copy failed"
         );
-
       }
-
     }
-
 
 
     /* ===================================== */
@@ -1031,137 +873,82 @@
       const position =
         sections[name];
 
-
       if (
-        typeof position !==
-        "number"
+        typeof position !== "number"
       ) {
-
         return;
-
       }
-
 
       const image =
         document.getElementById(
           "siteImage"
         );
 
-
       const site =
         document.getElementById(
           "site"
         );
-
 
       const destination =
         site.offsetTop +
         image.clientHeight *
         position;
 
-
       window.scrollTo({
-
         top: destination,
-
         behavior: "smooth"
-
       });
 
     }
 
 
-
     /* ===================================== */
-    /* 🚀 RANDOM ROCKET SYSTEM */
+    /* 🚀 RANDOM ROCKET */
     /* ===================================== */
 
     function launchRandomRocket() {
 
-      /*
-        Do not launch animations if
-        reduced motion is enabled.
-      */
-
-      if (
-        window.matchMedia(
-          "(prefers-reduced-motion: reduce)"
-        ).matches
-      ) {
-
+      if (reduceMotion()) {
         return;
-
       }
 
-
       const rocket =
-        document.createElement(
-          "div"
-        );
-
+        document.createElement("div");
 
       rocket.className =
         "rocket-fx";
 
-
       rocket.textContent =
         "🚀";
 
-
-      /*
-        Random horizontal starting point.
-      */
-
-      const startPosition =
-        Math.random() * 96;
-
-
       rocket.style.left =
-        startPosition + "vw";
+        Math.random() * 96 + "vw";
 
-
-      /*
-        Random rocket size:
-        approximately 24px to 65px.
-      */
 
       const size =
         24 +
         Math.random() * 41;
 
-
       rocket.style.fontSize =
         size + "px";
 
-
-      /*
-        Random flight duration:
-        6 to 12 seconds.
-      */
 
       const duration =
         6 +
         Math.random() * 6;
 
-
       rocket.style.animationDuration =
         duration + "s";
 
-
-      /*
-        Random sideways drift.
-      */
 
       const drift =
         -100 +
         Math.random() * 200;
 
-
       rocket.style.setProperty(
         "--drift",
         drift + "px"
       );
-
 
       rocket.style.setProperty(
         "--drift-half",
@@ -1169,63 +956,28 @@
       );
 
 
-      /*
-        Slightly different transparency
-        for every rocket.
-      */
-
-      rocket.style.opacity =
-        0.75 +
-        Math.random() * 0.25;
-
-
-      /*
-        Add rocket to the website.
-      */
-
       document.body.appendChild(
         rocket
       );
 
 
-      /*
-        Remove rocket when its animation
-        has finished.
-      */
-
       setTimeout(
         function () {
-
           rocket.remove();
-
         },
-
-        duration * 1000 +
-        1000
+        duration * 1000 + 1000
       );
 
     }
 
 
-
-    /* ===================================== */
-    /* 🚀 RANDOM LAUNCH LOOP */
-    /* ===================================== */
-
     function rocketLoop() {
 
       launchRandomRocket();
 
-
-      /*
-        Next launch occurs randomly
-        between about 1.7 and 4.7 seconds.
-      */
-
       const nextLaunch =
         1700 +
         Math.random() * 3000;
-
 
       window.orbitRocketTimer =
         setTimeout(
@@ -1236,18 +988,207 @@
     }
 
 
+    /* ===================================== */
+    /* ☄️ SHOOTING STAR */
+    /* ===================================== */
+
+    function launchShootingStar() {
+
+      if (reduceMotion()) {
+        return;
+      }
+
+      const star =
+        document.createElement("div");
+
+      star.className =
+        "shooting-star-fx";
+
+
+      /*
+        Start somewhere around the
+        upper-left region of the screen.
+      */
+
+      star.style.top =
+        Math.random() * 35 + "vh";
+
+      star.style.left =
+        (-120 +
+        Math.random() * 100) +
+        "px";
+
+
+      const duration =
+        1.3 +
+        Math.random() * 1.2;
+
+      star.style.animationDuration =
+        duration + "s";
+
+
+      document.body.appendChild(
+        star
+      );
+
+
+      setTimeout(
+        function () {
+          star.remove();
+        },
+        duration * 1000 + 500
+      );
+
+    }
+
+
+    function shootingStarLoop() {
+
+      launchShootingStar();
+
+
+      /*
+        Approximately one shooting star
+        every 6–15 seconds.
+      */
+
+      const nextStar =
+        6000 +
+        Math.random() * 9000;
+
+
+      window.orbitStarTimer =
+        setTimeout(
+          shootingStarLoop,
+          nextStar
+        );
+
+    }
+
 
     /* ===================================== */
-    /* START ROCKET SYSTEM */
+    /* 🛸 RANDOM UFO */
+    /* ===================================== */
+
+    function launchUFO() {
+
+      if (reduceMotion()) {
+        return;
+      }
+
+      const ufo =
+        document.createElement("div");
+
+      ufo.className =
+        "ufo-fx";
+
+      ufo.textContent =
+        "🛸";
+
+
+      /*
+        Different vertical positions.
+      */
+
+      ufo.style.top =
+        (
+          10 +
+          Math.random() * 65
+        ) + "vh";
+
+
+      /*
+        Different UFO sizes.
+      */
+
+      const size =
+        36 +
+        Math.random() * 35;
+
+      ufo.style.fontSize =
+        size + "px";
+
+
+      /*
+        Slow fly-by.
+      */
+
+      const duration =
+        8 +
+        Math.random() * 6;
+
+      ufo.style.animationDuration =
+        duration + "s";
+
+
+      document.body.appendChild(
+        ufo
+      );
+
+
+      setTimeout(
+        function () {
+          ufo.remove();
+        },
+        duration * 1000 + 1000
+      );
+
+    }
+
+
+    function ufoLoop() {
+
+      launchUFO();
+
+
+      /*
+        UFOs are intentionally rare:
+        about every 18–40 seconds.
+      */
+
+      const nextUFO =
+        18000 +
+        Math.random() * 22000;
+
+
+      window.orbitUFOTimer =
+        setTimeout(
+          ufoLoop,
+          nextUFO
+        );
+
+    }
+
+
+    /* ===================================== */
+    /* ACCESSIBILITY */
+    /* ===================================== */
+
+    function reduceMotion() {
+
+      return window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+    }
+
+
+    /* ===================================== */
+    /* START SPACE EFFECTS */
     /* ===================================== */
 
     window.addEventListener(
       "load",
       function () {
 
+        if (reduceMotion()) {
+          return;
+        }
+
+
         /*
-          First rocket appears shortly
-          after the website loads.
+          🚀 First rocket:
+          about 1 second.
         */
 
         setTimeout(
@@ -1255,25 +1196,42 @@
           900
         );
 
+
+        /*
+          ☄️ First shooting star:
+          about 4 seconds.
+        */
+
+        setTimeout(
+          shootingStarLoop,
+          4000
+        );
+
+
+        /*
+          🛸 First UFO:
+          about 10 seconds.
+        */
+
+        setTimeout(
+          ufoLoop,
+          10000
+        );
+
       }
     );
 
 
-
     /* ===================================== */
-    /* PREVENT IMAGE DRAGGING */
+    /* PREVENT ARTWORK DRAGGING */
     /* ===================================== */
 
     document
-      .getElementById(
-        "siteImage"
-      )
+      .getElementById("siteImage")
       .addEventListener(
         "dragstart",
         function (event) {
-
           event.preventDefault();
-
         }
       );
 
