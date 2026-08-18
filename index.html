@@ -1,1113 +1,171 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
+/* ===================================== */
+/* ☄️ SHOOTING STARS */
+/* ===================================== */
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+.shooting-star-fx {
+  position: fixed;
+  top: -80px;
+  left: -100px;
 
-  <title>ORBIT — Dog in Space</title>
+  z-index: 5;
+  pointer-events: none;
+  user-select: none;
 
-  <meta
-    name="description"
-    content="ORBIT — Dog in Space. Official ORBIT project website."
-  >
+  width: 3px;
+  height: 3px;
 
-  <style>
+  border-radius: 50%;
 
-    * {
-      box-sizing: border-box;
-    }
+  background: white;
 
-    html {
-      margin: 0;
-      padding: 0;
-      background: #020611;
-      scroll-behavior: smooth;
-    }
+  box-shadow:
+    0 0 6px #ffffff,
+    0 0 12px #65cfff,
+    0 0 22px #258cff;
 
-    body {
-      margin: 0;
-      padding: 0;
-      background: #020611;
-      overflow-x: hidden;
-    }
+  animation:
+    shootingStarFly
+    linear
+    forwards;
+}
 
-    .site {
-      position: relative;
-      width: 100%;
-      max-width: 1024px;
-      margin: 0 auto;
-      line-height: 0;
-    }
+.shooting-star-fx::after {
+  content: "";
 
-    .site-image {
-      display: block;
-      width: 100%;
-      height: auto;
-      user-select: none;
-      -webkit-user-drag: none;
-    }
+  position: absolute;
 
+  width: 100px;
+  height: 2px;
 
-    /* ===================================== */
-    /* CLICKABLE AREAS */
-    /* ===================================== */
+  right: 0;
+  top: 0;
 
-    .click-area {
-      position: absolute;
-      display: block;
-      z-index: 10;
+  transform-origin: right center;
 
-      border: 0;
-      padding: 0;
-      margin: 0;
+  background:
+    linear-gradient(
+      to left,
+      rgba(255,255,255,0.95),
+      rgba(75,190,255,0.6),
+      transparent
+    );
+}
 
-      background: transparent;
-      cursor: pointer;
+@keyframes shootingStarFly {
 
-      -webkit-tap-highlight-color: transparent;
-    }
+  0% {
+    transform:
+      translate3d(0,0,0)
+      rotate(-35deg);
 
-    .click-area:focus-visible {
-      outline: 2px solid #42dfff;
-      outline-offset: 2px;
-      border-radius: 6px;
-    }
+    opacity: 0;
+  }
 
+  8% {
+    opacity: 1;
+  }
 
-    /* ===================================== */
-    /* COPY CONTRACT MESSAGE */
-    /* ===================================== */
+  80% {
+    opacity: 1;
+  }
 
-    #message {
-      position: fixed;
+  100% {
+    transform:
+      translate3d(
+        130vw,
+        80vh,
+        0
+      )
+      rotate(-35deg);
 
-      left: 50%;
-      bottom: 25px;
+    opacity: 0;
+  }
+}
 
-      transform:
-        translateX(-50%)
-        translateY(20px);
 
-      padding: 12px 18px;
+/* ===================================== */
+/* 🛸 RANDOM UFO */
+/* ===================================== */
 
-      border: 1px solid #42dfff;
-      border-radius: 10px;
+.ufo-fx {
+  position: fixed;
 
-      background: #061325;
-      color: white;
+  left: -150px;
 
-      font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
+  z-index: 5;
 
-      font-size: 14px;
-      font-weight: bold;
+  pointer-events: none;
+  user-select: none;
 
-      box-shadow:
-        0 0 25px
-        rgba(31, 169, 255, 0.45);
+  line-height: 1;
 
-      opacity: 0;
-      pointer-events: none;
-
-      transition:
-        opacity 0.2s,
-        transform 0.2s;
-
-      z-index: 1000;
-    }
-
-    #message.show {
-      opacity: 1;
-
-      transform:
-        translateX(-50%)
-        translateY(0);
-    }
-
-
-    /* ===================================== */
-    /* 🚀 FLYING ROCKETS */
-    /* ===================================== */
-
-    .rocket-fx {
-
-      position: fixed;
-
-      bottom: -120px;
-
-      z-index: 6;
-
-      pointer-events: none;
-
-      user-select: none;
-
-      line-height: 1;
-
-      will-change:
-        transform,
-        opacity;
-
-      filter:
-        drop-shadow(
-          0 0 7px
-          rgba(61, 173, 255, 0.95)
-        )
-        drop-shadow(
-          0 0 15px
-          rgba(255, 130, 40, 0.8)
-        );
-
-      animation-name:
-        orbitRocketFly;
-
-      animation-timing-function:
-        linear;
-
-      animation-fill-mode:
-        forwards;
-    }
-
-
-    @keyframes orbitRocketFly {
-
-      0% {
-
-        transform:
-          translate3d(
-            0,
-            0,
-            0
-          )
-          rotate(-45deg);
-
-        opacity: 0;
-
-      }
-
-
-      8% {
-
-        opacity: 1;
-
-      }
-
-
-      50% {
-
-        transform:
-          translate3d(
-            var(--drift-half),
-            -65vh,
-            0
-          )
-          rotate(-45deg);
-
-        opacity: 1;
-
-      }
-
-
-      88% {
-
-        opacity: 1;
-
-      }
-
-
-      100% {
-
-        transform:
-          translate3d(
-            var(--drift),
-            -140vh,
-            0
-          )
-          rotate(-45deg);
-
-        opacity: 0;
-
-      }
-
-    }
-
-
-    /*
-      Accessibility:
-      if the visitor has reduced-motion
-      enabled, rockets are disabled.
-    */
-
-    @media (
-      prefers-reduced-motion: reduce
-    ) {
-
-      .rocket-fx {
-        display: none !important;
-      }
-
-    }
-
-  </style>
-</head>
-
-
-<body>
-
-  <div
-    class="site"
-    id="site"
-  >
-
-    <!--
-      COMPLETE ORBIT DESIGN
-
-      Keep orbit-site.png in the same
-      GitHub folder as index.html.
-    -->
-
-    <img
-      src="orbit-site.png"
-      class="site-image"
-      id="siteImage"
-      alt="ORBIT Dog in Space official website"
-      draggable="false"
-    >
-
-
-
-    <!-- ====================================== -->
-    <!-- TOP NAVIGATION -->
-    <!-- ====================================== -->
-
-
-    <!-- HOME -->
-
-    <button
-      type="button"
-      class="click-area"
-      aria-label="Home"
-      title="Home"
-      onclick="goToSection('home')"
-
-      style="
-        left:29.7%;
-        top:0.55%;
-        width:4.6%;
-        height:2.1%;
-      "
-    ></button>
-
-
-
-    <!-- TOKEN -->
-
-    <button
-      type="button"
-      class="click-area"
-      aria-label="Token"
-      title="Token"
-      onclick="goToSection('token')"
-
-      style="
-        left:35.4%;
-        top:0.55%;
-        width:4.7%;
-        height:2.1%;
-      "
-    ></button>
-
-
-
-    <!-- TOKENOMICS -->
-
-    <button
-      type="button"
-      class="click-area"
-      aria-label="Tokenomics"
-      title="Tokenomics"
-      onclick="goToSection('tokenomics')"
-
-      style="
-        left:40.4%;
-        top:0.55%;
-        width:7.8%;
-        height:2.1%;
-      "
-    ></button>
-
-
-
-    <!-- MEME CENTER -->
-
-    <button
-      type="button"
-      class="click-area"
-      aria-label="Meme Center"
-      title="Meme Center"
-      onclick="goToSection('meme')"
-
-      style="
-        left:49.3%;
-        top:0.55%;
-        width:8.9%;
-        height:2.1%;
-      "
-    ></button>
-
-
-
-    <!-- ROADMAP -->
-
-    <button
-      type="button"
-      class="click-area"
-      aria-label="Roadmap"
-      title="Roadmap"
-      onclick="goToSection('roadmap')"
-
-      style="
-        left:59%;
-        top:0.55%;
-        width:6.7%;
-        height:2.1%;
-      "
-    ></button>
-
-
-
-    <!-- CONTRACT -->
-
-    <button
-      type="button"
-      class="click-area"
-      aria-label="Contract"
-      title="Official Contract"
-      onclick="goToSection('contract')"
-
-      style="
-        left:66.5%;
-        top:0.55%;
-        width:6.5%;
-        height:2.1%;
-      "
-    ></button>
-
-
-
-    <!-- FAQ / SECURITY -->
-
-    <button
-      type="button"
-      class="click-area"
-      aria-label="FAQ and Security"
-      title="FAQ / Security"
-      onclick="goToSection('security')"
-
-      style="
-        left:73.3%;
-        top:0.55%;
-        width:3.6%;
-        height:2.1%;
-      "
-    ></button>
-
-
-
-    <!-- ====================================== -->
-    <!-- TOP BLOCKSCOUT BUTTON -->
-    <!-- ====================================== -->
-
-    <a
-      class="click-area"
-
-      aria-label="View ORBIT on Blockscout"
-
-      title="View on Blockscout"
-
-      href="https://robinhoodchain.blockscout.com/address/0x3D42d61616EA2E48CA4Bd6a9e15BC443d1F76dE4"
-
-      target="_blank"
-
-      rel="noopener noreferrer"
-
-      style="
-        left:85.2%;
-        top:0.45%;
-        width:12.8%;
-        height:2.2%;
-      "
-    ></a>
-
-
-
-    <!-- ====================================== -->
-    <!-- HERO BLOCKSCOUT BUTTON -->
-    <!-- ====================================== -->
-
-    <a
-      class="click-area"
-
-      aria-label="View ORBIT contract on Blockscout"
-
-      title="View Contract on Blockscout"
-
-      href="https://robinhoodchain.blockscout.com/address/0x3D42d61616EA2E48CA4Bd6a9e15BC443d1F76dE4"
-
-      target="_blank"
-
-      rel="noopener noreferrer"
-
-      style="
-        left:8.8%;
-        top:23.6%;
-        width:15.3%;
-        height:2.45%;
-      "
-    ></a>
-
-
-
-    <!-- ====================================== -->
-    <!-- HERO COPY CONTRACT -->
-    <!-- ====================================== -->
-
-    <button
-      type="button"
-
-      class="click-area"
-
-      aria-label="Copy ORBIT contract address"
-
-      title="Copy Contract"
-
-      onclick="copyContract()"
-
-      style="
-        left:25%;
-        top:23.6%;
-        width:12.2%;
-        height:2.45%;
-      "
-    ></button>
-
-
-
-    <!-- ====================================== -->
-    <!-- CONTRACT PANEL COPY BUTTON -->
-    <!-- ====================================== -->
-
-    <button
-      type="button"
-
-      class="click-area"
-
-      aria-label="Copy official ORBIT contract"
-
-      title="Copy Official Contract"
-
-      onclick="copyContract()"
-
-      style="
-        left:89%;
-        top:70.1%;
-        width:5.4%;
-        height:2.35%;
-      "
-    ></button>
-
-
-
-    <!-- ====================================== -->
-    <!-- CONTRACT PANEL BLOCKSCOUT -->
-    <!-- ====================================== -->
-
-    <a
-      class="click-area"
-
-      aria-label="Verify ORBIT contract on Blockscout"
-
-      title="Verify on Blockscout"
-
-      href="https://robinhoodchain.blockscout.com/address/0x3D42d61616EA2E48CA4Bd6a9e15BC443d1F76dE4"
-
-      target="_blank"
-
-      rel="noopener noreferrer"
-
-      style="
-        left:74.4%;
-        top:74.2%;
-        width:17%;
-        height:2.6%;
-      "
-    ></a>
-
-
-
-    <!-- ====================================== -->
-    <!-- FOOTER BLOCKSCOUT -->
-    <!-- ====================================== -->
-
-    <a
-      class="click-area"
-
-      aria-label="ORBIT Blockscout"
-
-      title="Blockscout"
-
-      href="https://robinhoodchain.blockscout.com/address/0x3D42d61616EA2E48CA4Bd6a9e15BC443d1F76dE4"
-
-      target="_blank"
-
-      rel="noopener noreferrer"
-
-      style="
-        left:25.8%;
-        top:96.8%;
-        width:8.6%;
-        height:1.8%;
-      "
-    ></a>
-
-
-
-    <!-- ====================================== -->
-    <!-- FOOTER GITHUB -->
-    <!-- ====================================== -->
-
-    <a
-      class="click-area"
-
-      aria-label="ORBIT GitHub"
-
-      title="GitHub"
-
-      href="https://github.com/Cr1st14nm/orbit-token"
-
-      target="_blank"
-
-      rel="noopener noreferrer"
-
-      style="
-        left:35.4%;
-        top:96.8%;
-        width:7%;
-        height:1.8%;
-      "
-    ></a>
-
-
-
-    <!-- ====================================== -->
-    <!-- FOOTER EMAIL -->
-    <!-- ====================================== -->
-
-    <a
-      class="click-area"
-
-      aria-label="Contact ORBIT"
-
-      title="Email ORBIT"
-
-      href="mailto:orbitfoundation@protonmail.com"
-
-      style="
-        left:43.5%;
-        top:96.8%;
-        width:15%;
-        height:1.8%;
-      "
-    ></a>
-
-  </div>
-
-
-
-  <!-- ====================================== -->
-  <!-- NOTIFICATION -->
-  <!-- ====================================== -->
-
-  <div
-    id="message"
-    role="status"
-    aria-live="polite"
-  >
-    Contract copied 🚀
-  </div>
-
-
-
-  <script>
-
-    /* ===================================== */
-    /* OFFICIAL ORBIT CONTRACT */
-    /* ===================================== */
-
-    const CONTRACT =
-      "0x3D42d61616EA2E48CA4Bd6a9e15BC443d1F76dE4";
-
-
-
-    /* ===================================== */
-    /* SITE SECTIONS */
-    /* ===================================== */
-
-    const sections = {
-
-      home: 0,
-
-      meme: 0.34,
-
-      token: 0.625,
-
-      tokenomics: 0.625,
-
-      contract: 0.625,
-
-      security: 0.765,
-
-      roadmap: 0.84
-
-    };
-
-
-
-    /* ===================================== */
-    /* MESSAGE */
-    /* ===================================== */
-
-    function showMessage(text) {
-
-      const message =
-        document.getElementById(
-          "message"
-        );
-
-
-      message.textContent =
-        text;
-
-
-      message.classList.add(
-        "show"
-      );
-
-
-      clearTimeout(
-        window.orbitMessageTimer
-      );
-
-
-      window.orbitMessageTimer =
-        setTimeout(
-          function () {
-
-            message.classList.remove(
-              "show"
-            );
-
-          },
-
-          1700
-        );
-
-    }
-
-
-
-    /* ===================================== */
-    /* COPY CONTRACT */
-    /* ===================================== */
-
-    async function copyContract() {
-
-      try {
-
-        if (
-          navigator.clipboard &&
-          window.isSecureContext
-        ) {
-
-          await navigator.clipboard
-            .writeText(CONTRACT);
-
-        }
-
-        else {
-
-          fallbackCopy(
-            CONTRACT
-          );
-
-        }
-
-
-        showMessage(
-          "Contract copied 🚀"
-        );
-
-      }
-
-      catch (error) {
-
-        try {
-
-          fallbackCopy(
-            CONTRACT
-          );
-
-
-          showMessage(
-            "Contract copied 🚀"
-          );
-
-        }
-
-        catch (fallbackError) {
-
-          showMessage(
-            "Copy failed"
-          );
-
-        }
-
-      }
-
-    }
-
-
-
-    /* ===================================== */
-    /* COPY FALLBACK */
-    /* ===================================== */
-
-    function fallbackCopy(text) {
-
-      const textarea =
-        document.createElement(
-          "textarea"
-        );
-
-
-      textarea.value =
-        text;
-
-
-      textarea.setAttribute(
-        "readonly",
-        ""
-      );
-
-
-      textarea.style.position =
-        "fixed";
-
-      textarea.style.opacity =
-        "0";
-
-      textarea.style.pointerEvents =
-        "none";
-
-
-      document.body.appendChild(
-        textarea
-      );
-
-
-      textarea.select();
-
-
-      textarea.setSelectionRange(
-        0,
-        textarea.value.length
-      );
-
-
-      const successful =
-        document.execCommand(
-          "copy"
-        );
-
-
-      document.body.removeChild(
-        textarea
-      );
-
-
-      if (!successful) {
-
-        throw new Error(
-          "Copy failed"
-        );
-
-      }
-
-    }
-
-
-
-    /* ===================================== */
-    /* NAVIGATION */
-    /* ===================================== */
-
-    function goToSection(name) {
-
-      const position =
-        sections[name];
-
-
-      if (
-        typeof position !==
-        "number"
-      ) {
-
-        return;
-
-      }
-
-
-      const image =
-        document.getElementById(
-          "siteImage"
-        );
-
-
-      const site =
-        document.getElementById(
-          "site"
-        );
-
-
-      const destination =
-        site.offsetTop +
-        image.clientHeight *
-        position;
-
-
-      window.scrollTo({
-
-        top: destination,
-
-        behavior: "smooth"
-
-      });
-
-    }
-
-
-
-    /* ===================================== */
-    /* 🚀 RANDOM ROCKET SYSTEM */
-    /* ===================================== */
-
-    function launchRandomRocket() {
-
-      /*
-        Do not launch animations if
-        reduced motion is enabled.
-      */
-
-      if (
-        window.matchMedia(
-          "(prefers-reduced-motion: reduce)"
-        ).matches
-      ) {
-
-        return;
-
-      }
-
-
-      const rocket =
-        document.createElement(
-          "div"
-        );
-
-
-      rocket.className =
-        "rocket-fx";
-
-
-      rocket.textContent =
-        "🚀";
-
-
-      /*
-        Random horizontal starting point.
-      */
-
-      const startPosition =
-        Math.random() * 96;
-
-
-      rocket.style.left =
-        startPosition + "vw";
-
-
-      /*
-        Random rocket size:
-        approximately 24px to 65px.
-      */
-
-      const size =
-        24 +
-        Math.random() * 41;
-
-
-      rocket.style.fontSize =
-        size + "px";
-
-
-      /*
-        Random flight duration:
-        6 to 12 seconds.
-      */
-
-      const duration =
-        6 +
-        Math.random() * 6;
-
-
-      rocket.style.animationDuration =
-        duration + "s";
-
-
-      /*
-        Random sideways drift.
-      */
-
-      const drift =
-        -100 +
-        Math.random() * 200;
-
-
-      rocket.style.setProperty(
-        "--drift",
-        drift + "px"
-      );
-
-
-      rocket.style.setProperty(
-        "--drift-half",
-        drift / 2 + "px"
-      );
-
-
-      /*
-        Slightly different transparency
-        for every rocket.
-      */
-
-      rocket.style.opacity =
-        0.75 +
-        Math.random() * 0.25;
-
-
-      /*
-        Add rocket to the website.
-      */
-
-      document.body.appendChild(
-        rocket
-      );
-
-
-      /*
-        Remove rocket when its animation
-        has finished.
-      */
-
-      setTimeout(
-        function () {
-
-          rocket.remove();
-
-        },
-
-        duration * 1000 +
-        1000
-      );
-
-    }
-
-
-
-    /* ===================================== */
-    /* 🚀 RANDOM LAUNCH LOOP */
-    /* ===================================== */
-
-    function rocketLoop() {
-
-      launchRandomRocket();
-
-
-      /*
-        Next launch occurs randomly
-        between about 1.7 and 4.7 seconds.
-      */
-
-      const nextLaunch =
-        1700 +
-        Math.random() * 3000;
-
-
-      window.orbitRocketTimer =
-        setTimeout(
-          rocketLoop,
-          nextLaunch
-        );
-
-    }
-
-
-
-    /* ===================================== */
-    /* START ROCKET SYSTEM */
-    /* ===================================== */
-
-    window.addEventListener(
-      "load",
-      function () {
-
-        /*
-          First rocket appears shortly
-          after the website loads.
-        */
-
-        setTimeout(
-          rocketLoop,
-          900
-        );
-
-      }
+  filter:
+    drop-shadow(
+      0 0 8px
+      rgba(83,255,220,0.9)
+    )
+    drop-shadow(
+      0 0 20px
+      rgba(80,110,255,0.8)
     );
 
+  animation:
+    ufoFly
+    linear
+    forwards;
+}
 
+@keyframes ufoFly {
 
-    /* ===================================== */
-    /* PREVENT IMAGE DRAGGING */
-    /* ===================================== */
-
-    document
-      .getElementById(
-        "siteImage"
+  0% {
+    transform:
+      translate3d(
+        -150px,
+        0,
+        0
       )
-      .addEventListener(
-        "dragstart",
-        function (event) {
+      rotate(-4deg);
 
-          event.preventDefault();
+    opacity: 0;
+  }
 
-        }
-      );
+  7% {
+    opacity: 1;
+  }
 
-  </script>
+  45% {
+    transform:
+      translate3d(
+        55vw,
+        -25px,
+        0
+      )
+      rotate(4deg);
+  }
 
-</body>
-</html>
+  55% {
+    transform:
+      translate3d(
+        65vw,
+        18px,
+        0
+      )
+      rotate(-3deg);
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    transform:
+      translate3d(
+        125vw,
+        -15px,
+        0
+      )
+      rotate(3deg);
+
+    opacity: 0;
+  }
+}
