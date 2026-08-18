@@ -14,7 +14,50 @@
     name="description"
     content="ORBIT — Dog in Space. Official ORBIT project website."
   >
+.rocket-fx {
+  position: fixed;
+  bottom: -120px;
+  z-index: 4;
 
+  pointer-events: none;
+
+  font-size: 40px;
+
+  filter:
+    drop-shadow(0 0 10px #37a8ff)
+    drop-shadow(0 0 20px #ff8a2c);
+
+  animation-name: orbitRocketFly;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes orbitRocketFly {
+
+  0% {
+    transform:
+      translateY(0)
+      rotate(-45deg);
+
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  85% {
+    opacity: 1;
+  }
+
+  100% {
+    transform:
+      translateY(-130vh)
+      rotate(-45deg);
+
+    opacity: 0;
+  }
+}
   <style>
     * {
       box-sizing: border-box;
