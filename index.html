@@ -1,496 +1,829 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>ORBIT | Robinhood Chain</title>
-  <meta name="description" content="Official information page for the ORBIT token on Robinhood Chain.">
+<title>ORBIT | Dog in Space</title>
+<meta name="description" content="ORBIT — a space-powered meme token on Robinhood Chain. Dog in space. Frog onboard. Wen Mars?">
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
+:root{
+  --bg:#02040b;
+  --panel:#081127;
+  --panel2:#0d1935;
+  --blue:#2f7cff;
+  --cyan:#55d9ff;
+  --purple:#8b5cff;
+  --green:#55ff9a;
+  --orange:#ff9b45;
+  --text:#f4f7ff;
+  --muted:#8d9bbb;
+  --border:#203b70;
+}
 
-    html {
-      scroll-behavior: smooth;
-    }
+*{
+  box-sizing:border-box;
+}
 
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      color: #fff;
-      background:
-        radial-gradient(circle at top, #162c5e 0%, #071023 43%, #02040a 100%);
-    }
+html{
+  scroll-behavior:smooth;
+}
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .wrap {
-      width: min(1100px, 92%);
-      margin: auto;
-    }
-
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(3, 7, 16, .88);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid #1c315b;
-    }
-
-    nav .wrap {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      min-height: 70px;
-    }
-
-    .brand {
-      font-weight: 800;
-      letter-spacing: 4px;
-      font-size: 22px;
-    }
-
-    .navlinks {
-      display: flex;
-      gap: 24px;
-      color: #aab9dd;
-      font-size: 14px;
-    }
-
-    .hero {
-      min-height: 720px;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      padding: 70px 20px;
-    }
-
-    .logo {
-      width: 250px;
-      height: 250px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 3px solid #4388ff;
-      box-shadow:
-        0 0 30px rgba(38, 111, 255, .6),
-        0 0 80px rgba(38, 111, 255, .25);
-    }
-
-    h1 {
-      font-size: clamp(56px, 9vw, 100px);
-      margin: 30px 0 8px;
-      letter-spacing: 12px;
-      line-height: 1;
-    }
-
-    .tagline {
-      color: #74a5ff;
-      font-size: 21px;
-    }
-
-    .intro {
-      max-width: 720px;
-      margin: 28px auto;
-      line-height: 1.8;
-      color: #c2cce3;
-      font-size: 17px;
-    }
-
-    .buttons {
-      display: flex;
-      justify-content: center;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-top: 28px;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 14px 22px;
-      border-radius: 10px;
-      font-weight: 700;
-      border: 1px solid #3768be;
-      background: #1262ef;
-    }
-
-    .btn.secondary {
-      background: transparent;
-      color: #c8d5f5;
-    }
-
-    section {
-      padding: 85px 0;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    .section-title h2 {
-      font-size: 38px;
-      margin-bottom: 10px;
-    }
-
-    .section-title p {
-      color: #8292b5;
-    }
-
-    .card {
-      background: rgba(10, 18, 38, .82);
-      border: 1px solid #20365f;
-      border-radius: 18px;
-      padding: 28px;
-    }
-
-    .token-info {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-      gap: 16px;
-    }
-
-    .info-label {
-      display: block;
-      color: #7d8cad;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 8px;
-    }
-
-    .info-value {
-      font-size: 18px;
-      font-weight: 700;
-    }
-
-    .contract-box {
-      margin-top: 20px;
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      padding: 18px;
-      border: 1px solid #294a82;
-      border-radius: 12px;
-      background: #050b18;
-    }
-
-    #contract {
-      word-break: break-all;
-      flex: 1;
-      font-family: monospace;
-      color: #cbd9ff;
-    }
-
-    .copy {
-      cursor: pointer;
-      border: 0;
-      padding: 10px 14px;
-      border-radius: 8px;
-      background: #1b67e8;
-      color: #fff;
-      font-weight: bold;
-    }
-
-    .tokenomics {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
-    }
-
-    .allocation {
-      border-left: 4px solid #3278f5;
-    }
-
-    .allocation strong {
-      display: block;
-      font-size: 26px;
-      margin-top: 8px;
-    }
-
-    .allocation span {
-      color: #8fa1c7;
-    }
-
-    .security {
-      max-width: 800px;
-      margin: auto;
-      text-align: center;
-      line-height: 1.8;
-      color: #aebbd8;
-    }
-
-    footer {
-      text-align: center;
-      color: #647393;
-      border-top: 1px solid #172642;
-      padding: 35px 20px;
-    }
-
-    @media (max-width: 650px) {
-      .navlinks {
-        display: none;
-      }
-
-      .logo {
-        width: 190px;
-        height: 190px;
-      }
-
-      .contract-box {
-        flex-direction: column;
-        align-items: stretch;
-      }
-    }
- .meme-zone {
-  position: relative;
-  overflow: hidden;
-  padding: 0 0 90px;
+body{
+  margin:0;
+  color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
   background:
-    radial-gradient(circle at 20% 20%, rgba(47,105,255,.18), transparent 30%),
-    radial-gradient(circle at 80% 70%, rgba(128,0,255,.14), transparent 30%);
+    radial-gradient(circle at 50% -10%,#173a7a 0%,transparent 28%),
+    radial-gradient(circle at 15% 35%,rgba(80,50,255,.15),transparent 25%),
+    radial-gradient(circle at 85% 60%,rgba(0,150,255,.10),transparent 28%),
+    var(--bg);
+  overflow-x:hidden;
 }
 
-.space-ticker {
-  width: 100%;
-  padding: 14px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-align: center;
-  font-weight: 800;
-  letter-spacing: 2px;
-  color: #fff;
-  background: linear-gradient(
-    90deg,
-    #0c43bd,
-    #6f35e6,
-    #0c43bd
-  );
-  box-shadow: 0 0 30px rgba(74,101,255,.35);
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-1;
+  background-image:
+    radial-gradient(#fff 1px,transparent 1px),
+    radial-gradient(#79aaff 1px,transparent 1px);
+  background-size:90px 90px,140px 140px;
+  background-position:0 0,35px 55px;
+  opacity:.22;
+  animation:stars 40s linear infinite;
 }
 
-.meme-content {
-  position: relative;
-  z-index: 2;
-  padding-top: 80px;
+@keyframes stars{
+  to{background-position:0 900px,35px 1255px;}
 }
 
-.meme-grid {
-  display: grid;
-  grid-template-columns:
-    repeat(auto-fit, minmax(250px,1fr));
-  gap: 18px;
+a{
+  color:inherit;
+  text-decoration:none;
 }
 
-.meme-card {
-  padding: 28px;
-  text-align: center;
-  border-radius: 18px;
-  border: 1px solid #315598;
+.wrap{
+  width:min(1180px,92%);
+  margin:auto;
+}
+
+/* NAV */
+
+nav{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:rgba(2,5,14,.83);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(67,114,199,.35);
+}
+
+nav .wrap{
+  min-height:72px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:900;
+  letter-spacing:4px;
+}
+
+.brand img{
+  width:38px;
+  height:38px;
+  object-fit:cover;
+  border-radius:50%;
+  box-shadow:0 0 18px #2975ff;
+}
+
+.navlinks{
+  display:flex;
+  gap:24px;
+  color:#aab8d8;
+  font-size:14px;
+}
+
+.navlinks a:hover{
+  color:#fff;
+}
+
+/* HERO */
+
+.hero{
+  position:relative;
+  min-height:850px;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  overflow:hidden;
+  padding:100px 20px 80px;
+}
+
+.planet{
+  position:absolute;
+  width:560px;
+  height:560px;
+  border-radius:50%;
   background:
-    linear-gradient(
-      145deg,
-      rgba(14,26,56,.95),
-      rgba(5,11,26,.95)
-    );
-  transition: .25s;
+    radial-gradient(circle at 35% 30%,#3979d6,#122d67 45%,#030711 73%);
+  opacity:.22;
+  filter:blur(1px);
+  box-shadow:0 0 130px rgba(38,108,255,.4);
 }
 
-.meme-card:hover {
-  transform: translateY(-7px) rotate(-1deg);
-  border-color: #5b91ff;
-  box-shadow: 0 15px 45px rgba(25,90,255,.22);
+.hero-content{
+  position:relative;
+  z-index:3;
 }
 
-.meme-icon {
-  font-size: 56px;
-  margin-bottom: 12px;
+.logo-shell{
+  position:relative;
+  width:280px;
+  height:280px;
+  margin:auto;
 }
 
-.meme-card h3 {
-  margin: 8px 0;
-}
-
-.meme-card p {
-  color: #9eacd0;
-  line-height: 1.6;
-}
-
-.elon-disclaimer {
-  max-width: 850px;
-  margin: 35px auto;
-  padding: 15px 20px;
-  text-align: center;
-  color: #7586aa;
-  font-size: 12px;
-  border: 1px dashed #294579;
-  border-radius: 12px;
-}
-
-.mission-screen {
-  max-width: 750px;
-  margin: 50px auto 0;
-  padding: 25px;
-  border-radius: 15px;
-  background: #020805;
-  border: 1px solid #22b968;
+.logo{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:50%;
+  border:3px solid #498dff;
   box-shadow:
-    0 0 30px rgba(33,255,125,.12);
-  font-family: monospace;
+    0 0 30px rgba(55,125,255,.8),
+    0 0 90px rgba(55,125,255,.35);
+  animation:floatDog 4s ease-in-out infinite;
 }
 
-.terminal-title {
-  margin-bottom: 20px;
-  color: #50ff95;
-  font-weight: bold;
-  letter-spacing: 3px;
+@keyframes floatDog{
+  0%,100%{transform:translateY(0) rotate(-1deg);}
+  50%{transform:translateY(-14px) rotate(1deg);}
 }
 
-.terminal-line {
-  padding: 7px 0;
-  color: #8fd9af;
+.orbit-ring{
+  position:absolute;
+  inset:-20px;
+  border:1px solid rgba(94,153,255,.5);
+  border-radius:50%;
+  transform:rotate(20deg) scaleY(.42);
+  animation:ring 10s linear infinite;
 }
 
-.terminal-line.green {
-  color: #55ff9a;
-  font-weight: bold;
+.orbit-ring::after{
+  content:"🛰️";
+  position:absolute;
+  right:20px;
+  top:42%;
+  font-size:26px;
 }
 
-.floating-rocket {
-  position: absolute;
-  font-size: 50px;
-  opacity: .55;
-  z-index: 1;
+@keyframes ring{
+  to{transform:rotate(380deg) scaleY(.42);}
 }
 
-.rocket-one {
-  top: 17%;
-  left: -100px;
-  animation: flyRocket 16s linear infinite;
+h1{
+  margin:35px 0 4px;
+  font-size:clamp(70px,12vw,145px);
+  letter-spacing:14px;
+  line-height:.9;
+  text-shadow:0 0 40px rgba(66,125,255,.35);
 }
 
-.rocket-two {
-  top: 65%;
-  left: -140px;
-  animation: flyRocket 25s linear infinite 5s;
+.hero-kicker{
+  color:#77b1ff;
+  font-weight:800;
+  letter-spacing:5px;
+  font-size:clamp(15px,2vw,22px);
 }
 
-.floating-frog {
-  position: absolute;
-  right: 5%;
-  top: 45%;
-  font-size: 65px;
-  opacity: .15;
-  animation: frogFloat 4s ease-in-out infinite;
+.hero-joke{
+  margin-top:14px;
+  font-size:clamp(25px,4vw,44px);
+  font-weight:900;
 }
 
-@keyframes flyRocket {
-  0% {
-    transform:
-      translateX(0)
-      translateY(80px)
-      rotate(45deg);
+.hero-joke span{
+  color:#ff725c;
+}
+
+.intro{
+  max-width:750px;
+  margin:25px auto;
+  color:#bdc8e0;
+  line-height:1.8;
+  font-size:17px;
+}
+
+.buttons{
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  flex-wrap:wrap;
+  margin-top:30px;
+}
+
+.btn{
+  padding:14px 22px;
+  border-radius:11px;
+  border:1px solid #3978e6;
+  background:linear-gradient(135deg,#1763ed,#5b3fe5);
+  font-weight:800;
+  box-shadow:0 10px 35px rgba(38,97,255,.22);
+  transition:.2s;
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 15px 45px rgba(38,97,255,.4);
+}
+
+.btn.secondary{
+  background:rgba(7,15,33,.8);
+}
+
+.scroll-hint{
+  margin-top:55px;
+  color:#617394;
+  font-size:12px;
+  letter-spacing:2px;
+}
+
+/* TICKER */
+
+.ticker{
+  overflow:hidden;
+  border-top:1px solid #3455a0;
+  border-bottom:1px solid #3455a0;
+  background:linear-gradient(90deg,#12295e,#5833c7,#12295e);
+}
+
+.ticker-track{
+  width:max-content;
+  padding:13px 0;
+  font-weight:900;
+  letter-spacing:2px;
+  white-space:nowrap;
+  animation:ticker 25s linear infinite;
+}
+
+@keyframes ticker{
+  to{transform:translateX(-50%);}
+}
+
+/* GENERAL */
+
+section{
+  padding:95px 0;
+  position:relative;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:45px;
+}
+
+.section-title .eyebrow{
+  color:#6f9fff;
+  font-size:12px;
+  letter-spacing:4px;
+  font-weight:900;
+}
+
+.section-title h2{
+  margin:10px 0;
+  font-size:clamp(34px,5vw,54px);
+}
+
+.section-title p{
+  color:var(--muted);
+}
+
+.card{
+  background:
+    linear-gradient(145deg,rgba(13,27,59,.94),rgba(5,11,27,.96));
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:28px;
+  box-shadow:0 20px 60px rgba(0,0,0,.18);
+}
+
+/* MEME CONTROL */
+
+.meme-zone{
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 20% 30%,rgba(58,94,255,.14),transparent 28%),
+    radial-gradient(circle at 85% 70%,rgba(125,51,255,.12),transparent 28%);
+}
+
+.meme-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.meme-card{
+  text-align:center;
+  min-height:230px;
+  transition:.25s;
+}
+
+.meme-card:hover{
+  transform:translateY(-8px) rotate(-.5deg);
+  border-color:#5790ff;
+}
+
+.meme-icon{
+  font-size:58px;
+}
+
+.meme-card h3{
+  margin:15px 0 8px;
+}
+
+.meme-card p{
+  color:#99a8c8;
+  line-height:1.65;
+}
+
+.pepe{
+  animation:pepeFloat 3s ease-in-out infinite;
+}
+
+@keyframes pepeFloat{
+  50%{transform:translateY(-10px) rotate(5deg);}
+}
+
+/* ROCKETS */
+
+.rocket{
+  position:absolute;
+  font-size:52px;
+  opacity:.55;
+  z-index:0;
+  pointer-events:none;
+}
+
+.r1{
+  top:15%;
+  left:-100px;
+  animation:fly 17s linear infinite;
+}
+
+.r2{
+  top:70%;
+  left:-140px;
+  animation:fly 27s linear infinite 6s;
+}
+
+@keyframes fly{
+  from{
+    transform:translate(-100px,150px) rotate(45deg);
+  }
+  to{
+    transform:translate(calc(100vw + 350px),-400px) rotate(45deg);
+  }
+}
+
+/* TERMINAL */
+
+.terminal{
+  max-width:820px;
+  margin:55px auto 0;
+  overflow:hidden;
+  border:1px solid #25c776;
+  border-radius:15px;
+  background:#020906;
+  box-shadow:0 0 45px rgba(37,199,118,.12);
+  font-family:Consolas,monospace;
+}
+
+.terminal-bar{
+  padding:12px 16px;
+  background:#07140e;
+  border-bottom:1px solid #163c29;
+  color:#67ffad;
+  font-size:13px;
+}
+
+.terminal-body{
+  padding:25px;
+}
+
+.line{
+  padding:7px 0;
+  color:#91d6b0;
+}
+
+.green{
+  color:#55ff9a;
+  font-weight:900;
+}
+
+.blink{
+  animation:blink 1s step-end infinite;
+}
+
+@keyframes blink{
+  50%{opacity:0;}
+}
+
+/* MARKET MOOD */
+
+.mood{
+  margin-top:55px;
+  text-align:center;
+}
+
+.mood-icons{
+  font-size:42px;
+  letter-spacing:14px;
+}
+
+.mood-text{
+  margin-top:14px;
+  color:#ffbd62;
+  font-weight:900;
+  letter-spacing:3px;
+}
+
+/* TOKEN */
+
+.token-info{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.info{
+  padding:20px;
+  border-radius:14px;
+  background:#070f22;
+  border:1px solid #172f59;
+}
+
+.label{
+  display:block;
+  color:#7486aa;
+  font-size:11px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  margin-bottom:8px;
+}
+
+.value{
+  font-size:18px;
+  font-weight:900;
+}
+
+/* TOKENOMICS */
+
+.tokenomics{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+}
+
+.allocation{
+  position:relative;
+  overflow:hidden;
+  min-height:150px;
+}
+
+.allocation::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  bottom:0;
+  width:4px;
+  background:linear-gradient(#3986ff,#8d5cff);
+}
+
+.allocation strong{
+  display:block;
+  font-size:30px;
+  margin:10px 0 4px;
+}
+
+.allocation span{
+  color:#8fa0c2;
+}
+
+/* CONTRACT */
+
+.contract-card{
+  max-width:930px;
+  margin:auto;
+  border-color:#3668bd;
+}
+
+.contract-box{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  background:#030816;
+  padding:20px;
+  border-radius:12px;
+  border:1px solid #25477f;
+}
+
+#contract{
+  flex:1;
+  word-break:break-all;
+  font-family:Consolas,monospace;
+  color:#d5e1ff;
+}
+
+.copy{
+  border:0;
+  cursor:pointer;
+  padding:11px 17px;
+  border-radius:9px;
+  background:#2167e8;
+  color:white;
+  font-weight:900;
+}
+
+.verified{
+  margin-top:18px;
+  color:#6dffac;
+  text-align:center;
+  font-size:13px;
+}
+
+/* SECURITY */
+
+.warning{
+  max-width:900px;
+  margin:auto;
+  border-color:#b27126;
+  background:
+    linear-gradient(145deg,rgba(56,32,10,.55),rgba(15,11,7,.8));
+}
+
+.warning h3{
+  color:#ffbd62;
+  margin-top:0;
+}
+
+.warning p{
+  color:#c3b295;
+  line-height:1.75;
+}
+
+/* ROADMAP */
+
+.roadmap{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.phase{
+  position:relative;
+}
+
+.phase-number{
+  font-size:12px;
+  letter-spacing:3px;
+  color:#699cff;
+}
+
+.phase h3{
+  font-size:22px;
+}
+
+.phase ul{
+  padding-left:18px;
+  color:#96a5c4;
+  line-height:1.9;
+}
+
+.phase.final{
+  border-color:#974cff;
+}
+
+/* DISCLAIMER */
+
+.disclaimer{
+  max-width:900px;
+  margin:40px auto 0;
+  padding:17px;
+  border:1px dashed #294878;
+  border-radius:12px;
+  color:#6e7e9f;
+  text-align:center;
+  font-size:12px;
+  line-height:1.7;
+}
+
+/* SECRET BUTTON */
+
+.chaos{
+  text-align:center;
+  padding-top:20px;
+}
+
+.danger-button{
+  border:1px solid #ff475d;
+  background:rgba(94,10,22,.4);
+  color:#ff8492;
+  padding:13px 20px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:900;
+}
+
+.danger-button:hover{
+  background:#c3223a;
+  color:white;
+}
+
+#chaosMessage{
+  min-height:30px;
+  margin-top:15px;
+  color:#ffb35c;
+  font-family:Consolas,monospace;
+}
+
+/* FOOTER */
+
+footer{
+  border-top:1px solid #17284a;
+  padding:45px 20px;
+  text-align:center;
+  color:#687898;
+}
+
+.footer-logo{
+  font-weight:900;
+  letter-spacing:5px;
+  color:#b7c8ed;
+  margin-bottom:12px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+  .meme-grid,
+  .token-info{
+    grid-template-columns:repeat(2,1fr);
   }
 
-  100% {
-    transform:
-      translateX(calc(100vw + 300px))
-      translateY(-300px)
-      rotate(45deg);
+  .tokenomics,
+  .roadmap{
+    grid-template-columns:repeat(2,1fr);
   }
 }
 
-@keyframes frogFloat {
-  0%,100% {
-    transform: translateY(0) rotate(-7deg);
+@media(max-width:620px){
+  .navlinks{
+    display:none;
   }
 
-  50% {
-    transform: translateY(-30px) rotate(7deg);
+  .hero{
+    min-height:760px;
   }
-} </style>
+
+  .logo-shell{
+    width:210px;
+    height:210px;
+  }
+
+  h1{
+    letter-spacing:7px;
+  }
+
+  .meme-grid,
+  .token-info,
+  .tokenomics,
+  .roadmap{
+    grid-template-columns:1fr;
+  }
+
+  .contract-box{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .copy{
+    width:100%;
+  }
+
+  section{
+    padding:75px 0;
+  }
+}
+</style>
 </head>
 
 <body>
 
 <nav>
   <div class="wrap">
-    <div class="brand">ORBIT</div>
+    <div class="brand">
+      <img src="orbit-logo.png" alt="ORBIT">
+      ORBIT
+    </div>
 
     <div class="navlinks">
+      <a href="#mission">Mission</a>
       <a href="#token">Token</a>
       <a href="#tokenomics">Tokenomics</a>
+      <a href="#roadmap">Roadmap</a>
       <a href="#contract-section">Contract</a>
     </div>
   </div>
 </nav>
 
 <header class="hero">
-  <div>
-    <img
-      src="orbit-logo.png"
-      alt="ORBIT astronaut mascot"
-      class="logo"
-    >
+
+  <div class="planet"></div>
+
+  <div class="hero-content">
+
+    <div class="logo-shell">
+      <div class="orbit-ring"></div>
+      <img
+        src="orbit-logo.png"
+        class="logo"
+        alt="ORBIT astronaut dog mascot"
+      >
+    </div>
 
     <h1>ORBIT</h1>
 
-    <div class="tagline">
-      Exploring the decentralized frontier
+    <div class="hero-kicker">
+      DOG IN SPACE • FROG ONBOARD
+    </div>
+
+    <div class="hero-joke">
+      WEN <span>MARS?</span> 🚀
     </div>
 
     <p class="intro">
-      ORBIT is an ERC-20 token deployed on Robinhood Chain,
-      with a fixed supply and an initial allocation defined
-      directly by its verified smart contract.
+      ORBIT is an ERC-20 token deployed on Robinhood Chain.
+      A verified smart contract, a fixed supply and one extremely
+      ambitious astronaut dog.
     </p>
 
     <div class="buttons">
+
       <a
         class="btn"
         href="https://robinhoodchain.blockscout.com/address/0x3D42d61616EA2E48CA4Bd6a9e15BC443d1F76dE4"
         target="_blank"
+        rel="noopener"
       >
-        View on Blockscout
+        🔎 View Contract
       </a>
 
-      <a class="btn secondary" href="#tokenomics">
-        Tokenomics
+      <a class="btn secondary" href="#mission">
+        🚀 Enter Mission Control
       </a>
+
     </div>
+
+    <div class="scroll-hint">
+      SCROLL TO LEAVE EARTH ↓
+    </div>
+
   </div>
 </header>
-<section class="meme-zone">
 
-  <div class="space-ticker">
-    🚀 ORBIT &nbsp; • &nbsp;
-    DOG IN SPACE &nbsp; • &nbsp;
-    WEN MARS? &nbsp; • &nbsp;
-    🐸 FROG ONBOARD &nbsp; • &nbsp;
-    1 BILLION ORBIT &nbsp; • &nbsp;
-    ZERO EARTHLY GRAVITY &nbsp; • &nbsp;
-    🚀
+<div class="ticker">
+  <div class="ticker-track">
+    🚀 ORBIT • 🐕‍🚀 DOG IN SPACE • 🐸 FROG ONBOARD • 🌕 WEN MOON? • 🔴 WEN MARS? • 🛰️ MEMES ONLINE •
+    🚀 ORBIT • 🐕‍🚀 DOG IN SPACE • 🐸 FROG ONBOARD • 🌕 WEN MOON? • 🔴 WEN MARS? • 🛰️ MEMES ONLINE •
   </div>
+</div>
 
-  <div class="floating-rocket rocket-one">🚀</div>
-  <div class="floating-rocket rocket-two">🚀</div>
-  <div class="floating-frog">🐸</div>
+<section class="meme-zone" id="mission">
 
-  <div class="wrap meme-content">
+  <div class="rocket r1">🚀</div>
+  <div class="rocket r2">🚀</div>
+
+  <div class="wrap">
 
     <div class="section-title">
+      <div class="eyebrow">MISSION 001</div>
       <h2>🚀 ORBIT Meme Control Center</h2>
       <p>Highly sophisticated interplanetary technology.*</p>
     </div>
 
     <div class="meme-grid">
 
-      <div class="meme-card">
+      <div class="card meme-card">
         <div class="meme-icon">🐕‍🚀</div>
         <h3>Mission Commander</h3>
         <p>
@@ -499,16 +832,16 @@
         </p>
       </div>
 
-      <div class="meme-card">
-        <div class="meme-icon">🐸</div>
+      <div class="card meme-card">
+        <div class="meme-icon pepe">🐸</div>
         <h3>Frog Division</h3>
         <p>
           Pepe has entered the spacecraft.
-          Nobody knows who gave him clearance.
+          Nobody remembers giving him clearance.
         </p>
       </div>
 
-      <div class="meme-card">
+      <div class="card meme-card">
         <div class="meme-icon">🚀</div>
         <h3>Rocket Department</h3>
         <p>
@@ -517,130 +850,148 @@
         </p>
       </div>
 
-      <div class="meme-card">
+      <div class="card meme-card">
         <div class="meme-icon">🌕</div>
         <h3>Moon Research</h3>
         <p>
-          Scientists continue investigating
-          whether "wen moon?" is a valid flight plan.
+          Scientists are still investigating whether
+          "wen moon?" qualifies as a flight plan.
         </p>
       </div>
 
-      <div class="meme-card">
+      <div class="card meme-card">
         <div class="meme-icon">👽</div>
         <h3>Alien Relations</h3>
         <p>
           First contact pending.
-          Marketing department already prepared stickers.
+          Marketing already prepared the stickers.
         </p>
       </div>
 
-      <div class="meme-card">
+      <div class="card meme-card">
         <div class="meme-icon">🛰️</div>
         <h3>Space Internet</h3>
         <p>
-          Signal strength: ███████░░<br>
-          Probably enough for memes.
+          Signal: ███████░░<br>
+          Probably enough bandwidth for memes.
         </p>
       </div>
 
     </div>
 
-    <div class="elon-disclaimer">
-      🚀 Inspired by internet space culture.
-      ORBIT is independent and is not affiliated with,
-      sponsored by, or endorsed by Elon Musk, SpaceX or affiliated companies.
+    <div class="terminal">
+
+      <div class="terminal-bar">
+        ● ● ● &nbsp; ORBIT_MISSION_COMPUTER.exe
+      </div>
+
+      <div class="terminal-body">
+
+        <div class="line">
+          > INITIALIZING DOGE_ASTRONAUT_PROTOCOL...
+        </div>
+
+        <div class="line">
+          > FROG_MODULE ............... ONLINE 🐸
+        </div>
+
+        <div class="line">
+          > ROCKET_ENGINE ............. READY 🚀
+        </div>
+
+        <div class="line">
+          > MEME_RESERVES ............. 100%
+        </div>
+
+        <div class="line">
+          > GRAVITY ................... OPTIONAL
+        </div>
+
+        <div class="line">
+          > DESTINATION ............... MARS-ISH
+        </div>
+
+        <div class="line green">
+          > MISSION STATUS: LET'S ORBIT
+          <span class="blink">_</span>
+        </div>
+
+      </div>
     </div>
 
-    <div class="mission-screen">
-
-      <div class="terminal-title">
-        ORBIT MISSION COMPUTER
+    <div class="mood">
+      <div class="mood-icons">😱 😨 😐 😎 🚀</div>
+      <div class="mood-text">
+        CURRENT SPACE MOOD: UNREASONABLY OPTIMISTIC
       </div>
+    </div>
 
-      <div class="terminal-line">
-        > INITIALIZING DOGE-ASTRONAUT_PROTOCOL...
-      </div>
-
-      <div class="terminal-line">
-        > FROG_MODULE ............... ONLINE 🐸
-      </div>
-
-      <div class="terminal-line">
-        > ROCKET_ENGINE .............. READY 🚀
-      </div>
-
-      <div class="terminal-line">
-        > MEME_RESERVES .............. 100%
-      </div>
-
-      <div class="terminal-line">
-        > GRAVITY .................... OPTIONAL
-      </div>
-
-      <div class="terminal-line green">
-        > MISSION STATUS: LET'S ORBIT
-      </div>
-
+    <div class="disclaimer">
+      🚀 Internet-space-culture parody.
+      ORBIT is independent and is not affiliated with,
+      sponsored by, or endorsed by Elon Musk, SpaceX,
+      Robinhood or their affiliated companies.
     </div>
 
   </div>
 </section>
+
 <main>
 
 <section id="token">
   <div class="wrap">
 
     <div class="section-title">
+      <div class="eyebrow">ON-CHAIN DATA</div>
       <h2>Token Information</h2>
-      <p>Official on-chain information for ORBIT.</p>
+      <p>The serious part of our extremely serious space program.</p>
     </div>
 
     <div class="card">
 
       <div class="token-info">
 
-        <div>
-          <span class="info-label">Name</span>
-          <span class="info-value">ORBIT</span>
+        <div class="info">
+          <span class="label">Name</span>
+          <span class="value">ORBIT</span>
         </div>
 
-        <div>
-          <span class="info-label">Symbol</span>
-          <span class="info-value">ORBIT</span>
+        <div class="info">
+          <span class="label">Symbol</span>
+          <span class="value">ORBIT</span>
         </div>
 
-        <div>
-          <span class="info-label">Network</span>
-          <span class="info-value">Robinhood Chain</span>
+        <div class="info">
+          <span class="label">Network</span>
+          <span class="value">Robinhood Chain</span>
         </div>
 
-        <div>
-          <span class="info-label">Standard</span>
-          <span class="info-value">ERC-20</span>
+        <div class="info">
+          <span class="label">Standard</span>
+          <span class="value">ERC-20</span>
         </div>
 
-        <div>
-          <span class="info-label">Total Supply</span>
-          <span class="info-value">1,000,000,000 ORBIT</span>
+        <div class="info">
+          <span class="label">Total Supply</span>
+          <span class="value">1,000,000,000 ORBIT</span>
         </div>
 
-        <div>
-          <span class="info-label">Contract Status</span>
-          <span class="info-value">Verified ✓</span>
+        <div class="info">
+          <span class="label">Contract</span>
+          <span class="value">Verified ✓</span>
         </div>
 
       </div>
-
     </div>
+
   </div>
 </section>
-
 
 <section id="tokenomics">
   <div class="wrap">
 
     <div class="section-title">
+      <div class="eyebrow">SUPPLY DISTRIBUTION</div>
       <h2>Tokenomics</h2>
       <p>Initial allocation encoded into the ORBIT smart contract.</p>
     </div>
@@ -699,18 +1050,85 @@
   </div>
 </section>
 
+<section id="roadmap">
+  <div class="wrap">
+
+    <div class="section-title">
+      <div class="eyebrow">FLIGHT PLAN*</div>
+      <h2>🪐 Roadmap to Absolutely Nowhere</h2>
+      <p>*And maybe Mars.</p>
+    </div>
+
+    <div class="roadmap">
+
+      <div class="card phase">
+        <div class="phase-number">PHASE 01</div>
+        <h3>🌍 Leave Earth</h3>
+        <ul>
+          <li>Deploy ORBIT</li>
+          <li>Verify contract</li>
+          <li>Give dog a helmet</li>
+          <li>Invite frog</li>
+        </ul>
+      </div>
+
+      <div class="card phase">
+        <div class="phase-number">PHASE 02</div>
+        <h3>🌕 Moon-ish</h3>
+        <ul>
+          <li>Build community</li>
+          <li>More memes</li>
+          <li>Improve mission control</li>
+          <li>Ask "wen moon?" again</li>
+        </ul>
+      </div>
+
+      <div class="card phase">
+        <div class="phase-number">PHASE 03</div>
+        <h3>🔴 Mars-ish</h3>
+        <ul>
+          <li>Expand ecosystem</li>
+          <li>Community missions</li>
+          <li>Alien negotiations</li>
+          <li>Absolutely no guarantees</li>
+        </ul>
+      </div>
+
+      <div class="card phase final">
+        <div class="phase-number">PHASE ∞</div>
+        <h3>👽 Unknown</h3>
+        <ul>
+          <li>Keep building</li>
+          <li>Keep verifying</li>
+          <li>Keep memes alive</li>
+          <li>Try not to hit asteroid</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="disclaimer">
+      This roadmap is intentionally humorous and does not constitute
+      a promise of price performance, exchange listing, partnership,
+      financial return or future functionality.
+    </div>
+
+  </div>
+</section>
 
 <section id="contract-section">
   <div class="wrap">
 
     <div class="section-title">
-      <h2>Official Contract</h2>
-      <p>Always verify this address before interacting with ORBIT.</p>
+      <div class="eyebrow">DO NOT TRUST RANDOM LINKS</div>
+      <h2>🔐 Official Contract</h2>
+      <p>Always verify the address before interacting with ORBIT.</p>
     </div>
 
-    <div class="card">
+    <div class="card contract-card">
 
       <div class="contract-box">
+
         <span id="contract">
           0x3D42d61616EA2E48CA4Bd6a9e15BC443d1F76dE4
         </span>
@@ -718,54 +1136,160 @@
         <button class="copy" onclick="copyContract()">
           Copy
         </button>
+
+      </div>
+
+      <div class="verified">
+        ✓ Source code publicly verified on Robinhood Chain Blockscout
+      </div>
+
+      <div class="buttons">
+
+        <a
+          class="btn secondary"
+          href="https://robinhoodchain.blockscout.com/address/0x3D42d61616EA2E48CA4Bd6a9e15BC443d1F76dE4"
+          target="_blank"
+          rel="noopener"
+        >
+          Open Blockscout ↗
+        </a>
+
       </div>
 
     </div>
   </div>
 </section>
 
-
 <section>
   <div class="wrap">
 
     <div class="section-title">
-      <h2>Transparency</h2>
+      <div class="eyebrow">SPACE SAFETY DEPARTMENT</div>
+      <h2>⚠️ DYOR Before Launch</h2>
     </div>
 
-    <p class="security">
-      ORBIT's smart contract source code is publicly verified on the
-      Robinhood Chain Blockscout explorer. Token supply and the initial
-      allocation are defined by the deployed contract and can be inspected
-      directly on-chain.
-    </p>
+    <div class="card warning">
+
+      <h3>Crypto involves risk. Space also involves risk.</h3>
+
+      <p>
+        ORBIT is a meme-oriented crypto project.
+        Always verify the official contract address, understand
+        the smart contract and network you are interacting with,
+        protect your wallet credentials and independently evaluate
+        risks before making any decision involving digital assets.
+      </p>
+
+      <p>
+        Nothing on this website is financial, investment, legal
+        or tax advice. Memes are not investment research.
+        Astronaut dogs are especially poor financial advisers.
+      </p>
+
+    </div>
+
+    <div class="chaos">
+
+      <button
+        class="danger-button"
+        onclick="activateChaos()"
+      >
+        ⚠️ DO NOT PRESS
+      </button>
+
+      <div id="chaosMessage"></div>
+
+    </div>
 
   </div>
 </section>
 
 </main>
 
-
 <footer>
-  ORBIT • Robinhood Chain
+
+  <div class="footer-logo">
+    🐕‍🚀 ORBIT
+  </div>
+
+  Robinhood Chain • ERC-20
   <br><br>
-  Always verify the official contract address.
+
+  Dog in space. Frog onboard. Contract verified.
+  <br><br>
+
+  <small>
+    Independent community project.
+    No affiliation or endorsement by Elon Musk,
+    SpaceX or Robinhood.
+  </small>
+
 </footer>
 
-
 <script>
-  function copyContract() {
-    const address =
-      "0x3D42d61616EA2E48CA4Bd6a9e15BC443d1F76dE4";
+function copyContract(){
+  const address =
+    "0x3D42d61616EA2E48CA4Bd6a9e15BC443d1F76dE4";
 
-    navigator.clipboard.writeText(address);
+  navigator.clipboard.writeText(address);
 
-    const button = document.querySelector(".copy");
-    button.innerText = "Copied ✓";
+  const button = document.querySelector(".copy");
 
-    setTimeout(() => {
-      button.innerText = "Copy";
-    }, 1800);
-  }
+  button.innerText = "Copied ✓";
+
+  setTimeout(()=>{
+    button.innerText = "Copy";
+  },1800);
+}
+
+const chaosMessages = [
+  "🚀 ROCKET ENGINE ACCIDENTALLY ACTIVATED.",
+  "🐸 PEPE HAS TAKEN CONTROL OF MISSION CONTROL.",
+  "👽 INCOMING MESSAGE: SEND MEMES.",
+  "🌕 MOON DETECTED. SCIENTISTS CONFUSED.",
+  "🐕‍🚀 COMMANDER REQUESTS MORE SNACKS.",
+  "🛰️ SPACE WIFI PASSWORD: WENMARS",
+  "🔴 MARS STATUS: STILL VERY FAR AWAY.",
+  "⚠️ ELON DETECTED... just kidding. Probably."
+];
+
+function activateChaos(){
+
+  const box =
+    document.getElementById("chaosMessage");
+
+  const random =
+    chaosMessages[
+      Math.floor(Math.random()*chaosMessages.length)
+    ];
+
+  box.innerText = random;
+
+  const rocket =
+    document.createElement("div");
+
+  rocket.innerText = "🚀";
+  rocket.style.position = "fixed";
+  rocket.style.left = "-100px";
+  rocket.style.bottom =
+    Math.floor(Math.random()*70) + "%";
+  rocket.style.fontSize = "70px";
+  rocket.style.zIndex = "9999";
+  rocket.style.pointerEvents = "none";
+  rocket.style.transition =
+    "transform 2.2s linear";
+
+  document.body.appendChild(rocket);
+
+  requestAnimationFrame(()=>{
+    rocket.style.transform =
+      "translateX(calc(100vw + 250px)) rotate(45deg)";
+  });
+
+  setTimeout(()=>{
+    rocket.remove();
+  },2400);
+}
 </script>
 
 </body>
