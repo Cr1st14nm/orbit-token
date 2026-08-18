@@ -51,8 +51,8 @@
     }
 
     /*
-      Áreas transparentes colocadas sobre os
-      botões existentes na própria imagem.
+      Transparent interactive areas placed
+      over the buttons visible in orbit-site.png.
     */
 
     .click-area {
@@ -66,6 +66,8 @@
 
       background: transparent;
       cursor: pointer;
+
+      -webkit-tap-highlight-color: transparent;
     }
 
     .click-area:focus-visible {
@@ -73,6 +75,10 @@
       outline-offset: 2px;
       border-radius: 6px;
     }
+
+    /*
+      Small confirmation notification.
+    */
 
     #message {
       position: fixed;
@@ -107,7 +113,9 @@
       opacity: 0;
       pointer-events: none;
 
-      transition: 0.2s;
+      transition:
+        opacity 0.2s,
+        transform 0.2s;
 
       z-index: 1000;
     }
@@ -125,31 +133,41 @@
 
 <body>
 
-  <div class="site" id="site">
+  <div
+    class="site"
+    id="site"
+  >
 
     <!--
-      ESTA É A IMAGEM COMPLETA DO DESIGN.
+      COMPLETE ORBIT DESIGN.
 
-      Coloque orbit-site.png
-      na mesma pasta do index.html.
+      Keep orbit-site.png in the same
+      GitHub folder as index.html.
     -->
 
     <img
       src="orbit-site.png"
       class="site-image"
       id="siteImage"
-      alt="ORBIT Dog in Space"
+      alt="ORBIT Dog in Space official website"
+      draggable="false"
     >
 
 
-    <!-- ============================= -->
-    <!-- MENU SUPERIOR -->
-    <!-- ============================= -->
+    <!-- ====================================== -->
+    <!-- TOP NAVIGATION -->
+    <!-- ====================================== -->
+
+
+    <!-- HOME -->
 
     <button
+      type="button"
       class="click-area"
       aria-label="Home"
-      onclick="goTo(0)"
+      title="Home"
+      onclick="goToSection('home')"
+
       style="
         left:29.7%;
         top:0.55%;
@@ -159,10 +177,15 @@
     ></button>
 
 
+    <!-- TOKEN -->
+
     <button
+      type="button"
       class="click-area"
       aria-label="Token"
-      onclick="goTo(0.637)"
+      title="Token"
+      onclick="goToSection('token')"
+
       style="
         left:35.4%;
         top:0.55%;
@@ -172,10 +195,15 @@
     ></button>
 
 
+    <!-- TOKENOMICS -->
+
     <button
+      type="button"
       class="click-area"
       aria-label="Tokenomics"
-      onclick="goTo(0.637)"
+      title="Tokenomics"
+      onclick="goToSection('tokenomics')"
+
       style="
         left:40.4%;
         top:0.55%;
@@ -185,10 +213,15 @@
     ></button>
 
 
+    <!-- MEME CENTER -->
+
     <button
+      type="button"
       class="click-area"
       aria-label="Meme Center"
-      onclick="goTo(0.335)"
+      title="Meme Center"
+      onclick="goToSection('meme')"
+
       style="
         left:49.3%;
         top:0.55%;
@@ -198,10 +231,15 @@
     ></button>
 
 
+    <!-- ROADMAP -->
+
     <button
+      type="button"
       class="click-area"
       aria-label="Roadmap"
-      onclick="goTo(0.85)"
+      title="Roadmap"
+      onclick="goToSection('roadmap')"
+
       style="
         left:59%;
         top:0.55%;
@@ -211,10 +249,15 @@
     ></button>
 
 
+    <!-- CONTRACT -->
+
     <button
+      type="button"
       class="click-area"
       aria-label="Contract"
-      onclick="goTo(0.637)"
+      title="Official Contract"
+      onclick="goToSection('contract')"
+
       style="
         left:66.5%;
         top:0.55%;
@@ -224,10 +267,15 @@
     ></button>
 
 
+    <!-- FAQ / SECURITY -->
+
     <button
+      type="button"
       class="click-area"
-      aria-label="FAQ"
-      onclick="goTo(0.77)"
+      aria-label="FAQ and Security"
+      title="FAQ / Security"
+      onclick="goToSection('security')"
+
       style="
         left:73.3%;
         top:0.55%;
@@ -237,14 +285,18 @@
     ></button>
 
 
-    <!-- ============================= -->
-    <!-- BOTÃO BLOCKSCOUT SUPERIOR -->
-    <!-- ============================= -->
+
+    <!-- ====================================== -->
+    <!-- TOP BLOCKSCOUT BUTTON -->
+    <!-- ====================================== -->
 
     <a
       class="click-area"
-      aria-label="View on Blockscout"
+      aria-label="View ORBIT on Blockscout"
+      title="View on Blockscout"
+
       href="https://robinhoodchain.blockscout.com/address/0x3D42d61616EA2E48CA4Bd6a9e15BC443d1F76dE4"
+
       target="_blank"
       rel="noopener noreferrer"
 
@@ -257,14 +309,18 @@
     ></a>
 
 
-    <!-- ============================= -->
-    <!-- BOTÃO BLOCKSCOUT PRINCIPAL -->
-    <!-- ============================= -->
+
+    <!-- ====================================== -->
+    <!-- HERO BLOCKSCOUT BUTTON -->
+    <!-- ====================================== -->
 
     <a
       class="click-area"
-      aria-label="View ORBIT on Blockscout"
+      aria-label="View ORBIT contract on Blockscout"
+      title="View Contract on Blockscout"
+
       href="https://robinhoodchain.blockscout.com/address/0x3D42d61616EA2E48CA4Bd6a9e15BC443d1F76dE4"
+
       target="_blank"
       rel="noopener noreferrer"
 
@@ -277,13 +333,16 @@
     ></a>
 
 
-    <!-- ============================= -->
-    <!-- COPY CONTRACT PRINCIPAL -->
-    <!-- ============================= -->
+
+    <!-- ====================================== -->
+    <!-- HERO COPY CONTRACT -->
+    <!-- ====================================== -->
 
     <button
+      type="button"
       class="click-area"
-      aria-label="Copy Contract"
+      aria-label="Copy ORBIT contract address"
+      title="Copy Contract"
       onclick="copyContract()"
 
       style="
@@ -295,13 +354,16 @@
     ></button>
 
 
-    <!-- ============================= -->
-    <!-- COPY CONTRACT - PAINEL -->
-    <!-- ============================= -->
+
+    <!-- ====================================== -->
+    <!-- CONTRACT PANEL COPY BUTTON -->
+    <!-- ====================================== -->
 
     <button
+      type="button"
       class="click-area"
-      aria-label="Copy Official Contract"
+      aria-label="Copy official ORBIT contract"
+      title="Copy Official Contract"
       onclick="copyContract()"
 
       style="
@@ -313,13 +375,15 @@
     ></button>
 
 
-    <!-- ============================= -->
-    <!-- BLOCKSCOUT - PAINEL CONTRATO -->
-    <!-- ============================= -->
+
+    <!-- ====================================== -->
+    <!-- CONTRACT PANEL BLOCKSCOUT BUTTON -->
+    <!-- ====================================== -->
 
     <a
       class="click-area"
-      aria-label="Open Official Contract on Blockscout"
+      aria-label="Verify ORBIT contract on Blockscout"
+      title="Verify on Blockscout"
 
       href="https://robinhoodchain.blockscout.com/address/0x3D42d61616EA2E48CA4Bd6a9e15BC443d1F76dE4"
 
@@ -335,13 +399,18 @@
     ></a>
 
 
-    <!-- ============================= -->
-    <!-- LINKS DO RODAPÉ -->
-    <!-- ============================= -->
+
+    <!-- ====================================== -->
+    <!-- FOOTER LINKS -->
+    <!-- ====================================== -->
+
+
+    <!-- BLOCKSCOUT -->
 
     <a
       class="click-area"
-      aria-label="Blockscout"
+      aria-label="ORBIT Blockscout"
+      title="Blockscout"
 
       href="https://robinhoodchain.blockscout.com/address/0x3D42d61616EA2E48CA4Bd6a9e15BC443d1F76dE4"
 
@@ -357,9 +426,12 @@
     ></a>
 
 
+    <!-- GITHUB -->
+
     <a
       class="click-area"
-      aria-label="GitHub"
+      aria-label="ORBIT GitHub"
+      title="GitHub"
 
       href="https://github.com/Cr1st14nm/orbit-token"
 
@@ -375,9 +447,12 @@
     ></a>
 
 
+    <!-- EMAIL -->
+
     <a
       class="click-area"
-      aria-label="Email"
+      aria-label="Contact ORBIT"
+      title="Email ORBIT"
 
       href="mailto:orbitfoundation@protonmail.com"
 
@@ -392,49 +467,237 @@
   </div>
 
 
-  <div id="message">
+
+  <!-- ====================================== -->
+  <!-- NOTIFICATION -->
+  <!-- ====================================== -->
+
+  <div
+    id="message"
+    role="status"
+    aria-live="polite"
+  >
     Contract copied 🚀
   </div>
 
 
+
   <script>
+
+    /*
+      OFFICIAL ORBIT CONTRACT
+    */
 
     const CONTRACT =
       "0x3D42d61616EA2E48CA4Bd6a9e15BC443d1F76dE4";
 
 
-    function copyContract() {
+    /*
+      Approximate positions of each section
+      inside orbit-site.png.
 
-      navigator.clipboard
-        .writeText(CONTRACT)
-        .then(function () {
+      The visual itself is NOT changed.
+    */
 
-          const message =
-            document.getElementById("message");
+    const sections = {
 
-          message.classList.add("show");
+      home: 0,
+
+      meme: 0.34,
+
+      token: 0.625,
+
+      tokenomics: 0.625,
+
+      contract: 0.625,
+
+      security: 0.765,
+
+      roadmap: 0.84
+
+    };
 
 
-          clearTimeout(
-            window.contractMessageTimer
+
+    /*
+      SHOW SMALL MESSAGE
+    */
+
+    function showMessage(text) {
+
+      const message =
+        document.getElementById("message");
+
+
+      message.textContent = text;
+
+      message.classList.add("show");
+
+
+      clearTimeout(
+        window.orbitMessageTimer
+      );
+
+
+      window.orbitMessageTimer =
+        setTimeout(function () {
+
+          message.classList.remove(
+            "show"
           );
 
-
-          window.contractMessageTimer =
-            setTimeout(function () {
-
-              message.classList.remove(
-                "show"
-              );
-
-            }, 1600);
-
-        });
+        }, 1700);
 
     }
 
 
-    function goTo(position) {
+
+    /*
+      COPY CONTRACT
+
+      First tries the modern Clipboard API.
+
+      If that is unavailable,
+      it automatically uses a fallback.
+    */
+
+    async function copyContract() {
+
+      try {
+
+        if (
+          navigator.clipboard &&
+          window.isSecureContext
+        ) {
+
+          await navigator.clipboard
+            .writeText(CONTRACT);
+
+        }
+
+        else {
+
+          fallbackCopy(CONTRACT);
+
+        }
+
+
+        showMessage(
+          "Contract copied 🚀"
+        );
+
+      }
+
+      catch (error) {
+
+        try {
+
+          fallbackCopy(CONTRACT);
+
+          showMessage(
+            "Contract copied 🚀"
+          );
+
+        }
+
+        catch (fallbackError) {
+
+          showMessage(
+            "Copy failed — select the contract manually"
+          );
+
+        }
+
+      }
+
+    }
+
+
+
+    /*
+      COPY FALLBACK
+    */
+
+    function fallbackCopy(text) {
+
+      const textarea =
+        document.createElement(
+          "textarea"
+        );
+
+
+      textarea.value = text;
+
+      textarea.setAttribute(
+        "readonly",
+        ""
+      );
+
+
+      textarea.style.position =
+        "fixed";
+
+      textarea.style.opacity =
+        "0";
+
+      textarea.style.pointerEvents =
+        "none";
+
+
+      document.body.appendChild(
+        textarea
+      );
+
+
+      textarea.select();
+
+      textarea.setSelectionRange(
+        0,
+        textarea.value.length
+      );
+
+
+      const successful =
+        document.execCommand(
+          "copy"
+        );
+
+
+      document.body.removeChild(
+        textarea
+      );
+
+
+      if (!successful) {
+
+        throw new Error(
+          "Copy command failed"
+        );
+
+      }
+
+    }
+
+
+
+    /*
+      NAVIGATION
+    */
+
+    function goToSection(name) {
+
+      const position =
+        sections[name];
+
+
+      if (
+        typeof position !== "number"
+      ) {
+
+        return;
+
+      }
+
 
       const image =
         document.getElementById(
@@ -463,6 +726,23 @@
       });
 
     }
+
+
+
+    /*
+      Prevent dragging the main artwork.
+    */
+
+    document
+      .getElementById("siteImage")
+      .addEventListener(
+        "dragstart",
+        function (event) {
+
+          event.preventDefault();
+
+        }
+      );
 
   </script>
 
