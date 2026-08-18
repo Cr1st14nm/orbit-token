@@ -14,51 +14,9 @@
     name="description"
     content="ORBIT — Dog in Space. Official ORBIT project website."
   >
-.rocket-fx {
-  position: fixed;
-  bottom: -120px;
-  z-index: 4;
 
-  pointer-events: none;
-
-  font-size: 40px;
-
-  filter:
-    drop-shadow(0 0 10px #37a8ff)
-    drop-shadow(0 0 20px #ff8a2c);
-
-  animation-name: orbitRocketFly;
-  animation-timing-function: linear;
-  animation-fill-mode: forwards;
-}
-
-@keyframes orbitRocketFly {
-
-  0% {
-    transform:
-      translateY(0)
-      rotate(-45deg);
-
-    opacity: 0;
-  }
-
-  10% {
-    opacity: 1;
-  }
-
-  85% {
-    opacity: 1;
-  }
-
-  100% {
-    transform:
-      translateY(-130vh)
-      rotate(-45deg);
-
-    opacity: 0;
-  }
-}
   <style>
+
     * {
       box-sizing: border-box;
     }
@@ -93,10 +51,10 @@
       -webkit-user-drag: none;
     }
 
-    /*
-      Transparent interactive areas placed
-      over the buttons visible in orbit-site.png.
-    */
+
+    /* ===================================== */
+    /* CLICKABLE AREAS */
+    /* ===================================== */
 
     .click-area {
       position: absolute;
@@ -119,9 +77,10 @@
       border-radius: 6px;
     }
 
-    /*
-      Small confirmation notification.
-    */
+
+    /* ===================================== */
+    /* COPY CONTRACT MESSAGE */
+    /* ===================================== */
 
     #message {
       position: fixed;
@@ -170,6 +129,130 @@
         translateX(-50%)
         translateY(0);
     }
+
+
+    /* ===================================== */
+    /* 🚀 FLYING ROCKETS */
+    /* ===================================== */
+
+    .rocket-fx {
+
+      position: fixed;
+
+      bottom: -120px;
+
+      z-index: 6;
+
+      pointer-events: none;
+
+      user-select: none;
+
+      line-height: 1;
+
+      will-change:
+        transform,
+        opacity;
+
+      filter:
+        drop-shadow(
+          0 0 7px
+          rgba(61, 173, 255, 0.95)
+        )
+        drop-shadow(
+          0 0 15px
+          rgba(255, 130, 40, 0.8)
+        );
+
+      animation-name:
+        orbitRocketFly;
+
+      animation-timing-function:
+        linear;
+
+      animation-fill-mode:
+        forwards;
+    }
+
+
+    @keyframes orbitRocketFly {
+
+      0% {
+
+        transform:
+          translate3d(
+            0,
+            0,
+            0
+          )
+          rotate(-45deg);
+
+        opacity: 0;
+
+      }
+
+
+      8% {
+
+        opacity: 1;
+
+      }
+
+
+      50% {
+
+        transform:
+          translate3d(
+            var(--drift-half),
+            -65vh,
+            0
+          )
+          rotate(-45deg);
+
+        opacity: 1;
+
+      }
+
+
+      88% {
+
+        opacity: 1;
+
+      }
+
+
+      100% {
+
+        transform:
+          translate3d(
+            var(--drift),
+            -140vh,
+            0
+          )
+          rotate(-45deg);
+
+        opacity: 0;
+
+      }
+
+    }
+
+
+    /*
+      Accessibility:
+      if the visitor has reduced-motion
+      enabled, rockets are disabled.
+    */
+
+    @media (
+      prefers-reduced-motion: reduce
+    ) {
+
+      .rocket-fx {
+        display: none !important;
+      }
+
+    }
+
   </style>
 </head>
 
@@ -182,7 +265,7 @@
   >
 
     <!--
-      COMPLETE ORBIT DESIGN.
+      COMPLETE ORBIT DESIGN
 
       Keep orbit-site.png in the same
       GitHub folder as index.html.
@@ -195,6 +278,7 @@
       alt="ORBIT Dog in Space official website"
       draggable="false"
     >
+
 
 
     <!-- ====================================== -->
@@ -220,6 +304,7 @@
     ></button>
 
 
+
     <!-- TOKEN -->
 
     <button
@@ -236,6 +321,7 @@
         height:2.1%;
       "
     ></button>
+
 
 
     <!-- TOKENOMICS -->
@@ -256,6 +342,7 @@
     ></button>
 
 
+
     <!-- MEME CENTER -->
 
     <button
@@ -272,6 +359,7 @@
         height:2.1%;
       "
     ></button>
+
 
 
     <!-- ROADMAP -->
@@ -292,6 +380,7 @@
     ></button>
 
 
+
     <!-- CONTRACT -->
 
     <button
@@ -308,6 +397,7 @@
         height:2.1%;
       "
     ></button>
+
 
 
     <!-- FAQ / SECURITY -->
@@ -335,12 +425,15 @@
 
     <a
       class="click-area"
+
       aria-label="View ORBIT on Blockscout"
+
       title="View on Blockscout"
 
       href="https://robinhoodchain.blockscout.com/address/0x3D42d61616EA2E48CA4Bd6a9e15BC443d1F76dE4"
 
       target="_blank"
+
       rel="noopener noreferrer"
 
       style="
@@ -359,12 +452,15 @@
 
     <a
       class="click-area"
+
       aria-label="View ORBIT contract on Blockscout"
+
       title="View Contract on Blockscout"
 
       href="https://robinhoodchain.blockscout.com/address/0x3D42d61616EA2E48CA4Bd6a9e15BC443d1F76dE4"
 
       target="_blank"
+
       rel="noopener noreferrer"
 
       style="
@@ -383,9 +479,13 @@
 
     <button
       type="button"
+
       class="click-area"
+
       aria-label="Copy ORBIT contract address"
+
       title="Copy Contract"
+
       onclick="copyContract()"
 
       style="
@@ -404,9 +504,13 @@
 
     <button
       type="button"
+
       class="click-area"
+
       aria-label="Copy official ORBIT contract"
+
       title="Copy Official Contract"
+
       onclick="copyContract()"
 
       style="
@@ -420,17 +524,20 @@
 
 
     <!-- ====================================== -->
-    <!-- CONTRACT PANEL BLOCKSCOUT BUTTON -->
+    <!-- CONTRACT PANEL BLOCKSCOUT -->
     <!-- ====================================== -->
 
     <a
       class="click-area"
+
       aria-label="Verify ORBIT contract on Blockscout"
+
       title="Verify on Blockscout"
 
       href="https://robinhoodchain.blockscout.com/address/0x3D42d61616EA2E48CA4Bd6a9e15BC443d1F76dE4"
 
       target="_blank"
+
       rel="noopener noreferrer"
 
       style="
@@ -444,20 +551,20 @@
 
 
     <!-- ====================================== -->
-    <!-- FOOTER LINKS -->
+    <!-- FOOTER BLOCKSCOUT -->
     <!-- ====================================== -->
-
-
-    <!-- BLOCKSCOUT -->
 
     <a
       class="click-area"
+
       aria-label="ORBIT Blockscout"
+
       title="Blockscout"
 
       href="https://robinhoodchain.blockscout.com/address/0x3D42d61616EA2E48CA4Bd6a9e15BC443d1F76dE4"
 
       target="_blank"
+
       rel="noopener noreferrer"
 
       style="
@@ -469,16 +576,22 @@
     ></a>
 
 
-    <!-- GITHUB -->
+
+    <!-- ====================================== -->
+    <!-- FOOTER GITHUB -->
+    <!-- ====================================== -->
 
     <a
       class="click-area"
+
       aria-label="ORBIT GitHub"
+
       title="GitHub"
 
       href="https://github.com/Cr1st14nm/orbit-token"
 
       target="_blank"
+
       rel="noopener noreferrer"
 
       style="
@@ -490,11 +603,16 @@
     ></a>
 
 
-    <!-- EMAIL -->
+
+    <!-- ====================================== -->
+    <!-- FOOTER EMAIL -->
+    <!-- ====================================== -->
 
     <a
       class="click-area"
+
       aria-label="Contact ORBIT"
+
       title="Email ORBIT"
 
       href="mailto:orbitfoundation@protonmail.com"
@@ -524,126 +642,21 @@
   </div>
 
 
-function launchRandomRocket() {
 
-  const rocket =
-    document.createElement("div");
-
-  rocket.className = "rocket-fx";
-
-  rocket.textContent = "🚀";
-
-
-  /*
-    posição horizontal aleatória
-  */
-
-  rocket.style.left =
-    Math.random() * 95 + "vw";
-
-
-  /*
-    tamanhos diferentes
-  */
-
-  const size =
-    25 + Math.random() * 55;
-
-  rocket.style.fontSize =
-    size + "px";
-
-
-  /*
-    velocidade aleatória
-  */
-
-  const duration =
-    5 + Math.random() * 8;
-
-  rocket.style.animationDuration =
-    duration + "s";
-
-
-  /*
-    pequena inclinação aleatória
-  */
-
-  rocket.style.marginLeft =
-    Math.random() * 80 - 40 + "px";
-
-
-  document.body.appendChild(
-    rocket
-  );
-
-
-  /*
-    remove depois da animação
-  */
-
-  setTimeout(function () {
-
-    rocket.remove();
-
-  }, duration * 1000 + 500);
-
-}
-
-
-/*
-  lança foguetes continuamente
-  em intervalos aleatórios
-*/
-
-function rocketLoop() {
-
-  launchRandomRocket();
-
-
-  const nextLaunch =
-    1800 +
-    Math.random() * 4200;
-
-
-  setTimeout(
-    rocketLoop,
-    nextLaunch
-  );
-
-}
-
-
-/*
-  começa depois que o site carregar
-*/
-
-window.addEventListener(
-  "load",
-  function () {
-
-    setTimeout(
-      rocketLoop,
-      1200
-    );
-
-  }
-);
   <script>
 
-    /*
-      OFFICIAL ORBIT CONTRACT
-    */
+    /* ===================================== */
+    /* OFFICIAL ORBIT CONTRACT */
+    /* ===================================== */
 
     const CONTRACT =
       "0x3D42d61616EA2E48CA4Bd6a9e15BC443d1F76dE4";
 
 
-    /*
-      Approximate positions of each section
-      inside orbit-site.png.
 
-      The visual itself is NOT changed.
-    */
+    /* ===================================== */
+    /* SITE SECTIONS */
+    /* ===================================== */
 
     const sections = {
 
@@ -665,19 +678,25 @@ window.addEventListener(
 
 
 
-    /*
-      SHOW SMALL MESSAGE
-    */
+    /* ===================================== */
+    /* MESSAGE */
+    /* ===================================== */
 
     function showMessage(text) {
 
       const message =
-        document.getElementById("message");
+        document.getElementById(
+          "message"
+        );
 
 
-      message.textContent = text;
+      message.textContent =
+        text;
 
-      message.classList.add("show");
+
+      message.classList.add(
+        "show"
+      );
 
 
       clearTimeout(
@@ -686,26 +705,25 @@ window.addEventListener(
 
 
       window.orbitMessageTimer =
-        setTimeout(function () {
+        setTimeout(
+          function () {
 
-          message.classList.remove(
-            "show"
-          );
+            message.classList.remove(
+              "show"
+            );
 
-        }, 1700);
+          },
+
+          1700
+        );
 
     }
 
 
 
-    /*
-      COPY CONTRACT
-
-      First tries the modern Clipboard API.
-
-      If that is unavailable,
-      it automatically uses a fallback.
-    */
+    /* ===================================== */
+    /* COPY CONTRACT */
+    /* ===================================== */
 
     async function copyContract() {
 
@@ -723,7 +741,9 @@ window.addEventListener(
 
         else {
 
-          fallbackCopy(CONTRACT);
+          fallbackCopy(
+            CONTRACT
+          );
 
         }
 
@@ -738,7 +758,10 @@ window.addEventListener(
 
         try {
 
-          fallbackCopy(CONTRACT);
+          fallbackCopy(
+            CONTRACT
+          );
+
 
           showMessage(
             "Contract copied 🚀"
@@ -749,7 +772,7 @@ window.addEventListener(
         catch (fallbackError) {
 
           showMessage(
-            "Copy failed — select the contract manually"
+            "Copy failed"
           );
 
         }
@@ -760,9 +783,9 @@ window.addEventListener(
 
 
 
-    /*
-      COPY FALLBACK
-    */
+    /* ===================================== */
+    /* COPY FALLBACK */
+    /* ===================================== */
 
     function fallbackCopy(text) {
 
@@ -772,7 +795,9 @@ window.addEventListener(
         );
 
 
-      textarea.value = text;
+      textarea.value =
+        text;
+
 
       textarea.setAttribute(
         "readonly",
@@ -797,6 +822,7 @@ window.addEventListener(
 
       textarea.select();
 
+
       textarea.setSelectionRange(
         0,
         textarea.value.length
@@ -817,7 +843,7 @@ window.addEventListener(
       if (!successful) {
 
         throw new Error(
-          "Copy command failed"
+          "Copy failed"
         );
 
       }
@@ -826,9 +852,9 @@ window.addEventListener(
 
 
 
-    /*
-      NAVIGATION
-    */
+    /* ===================================== */
+    /* NAVIGATION */
+    /* ===================================== */
 
     function goToSection(name) {
 
@@ -837,7 +863,8 @@ window.addEventListener(
 
 
       if (
-        typeof position !== "number"
+        typeof position !==
+        "number"
       ) {
 
         return;
@@ -875,12 +902,202 @@ window.addEventListener(
 
 
 
-    /*
-      Prevent dragging the main artwork.
-    */
+    /* ===================================== */
+    /* 🚀 RANDOM ROCKET SYSTEM */
+    /* ===================================== */
+
+    function launchRandomRocket() {
+
+      /*
+        Do not launch animations if
+        reduced motion is enabled.
+      */
+
+      if (
+        window.matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        ).matches
+      ) {
+
+        return;
+
+      }
+
+
+      const rocket =
+        document.createElement(
+          "div"
+        );
+
+
+      rocket.className =
+        "rocket-fx";
+
+
+      rocket.textContent =
+        "🚀";
+
+
+      /*
+        Random horizontal starting point.
+      */
+
+      const startPosition =
+        Math.random() * 96;
+
+
+      rocket.style.left =
+        startPosition + "vw";
+
+
+      /*
+        Random rocket size:
+        approximately 24px to 65px.
+      */
+
+      const size =
+        24 +
+        Math.random() * 41;
+
+
+      rocket.style.fontSize =
+        size + "px";
+
+
+      /*
+        Random flight duration:
+        6 to 12 seconds.
+      */
+
+      const duration =
+        6 +
+        Math.random() * 6;
+
+
+      rocket.style.animationDuration =
+        duration + "s";
+
+
+      /*
+        Random sideways drift.
+      */
+
+      const drift =
+        -100 +
+        Math.random() * 200;
+
+
+      rocket.style.setProperty(
+        "--drift",
+        drift + "px"
+      );
+
+
+      rocket.style.setProperty(
+        "--drift-half",
+        drift / 2 + "px"
+      );
+
+
+      /*
+        Slightly different transparency
+        for every rocket.
+      */
+
+      rocket.style.opacity =
+        0.75 +
+        Math.random() * 0.25;
+
+
+      /*
+        Add rocket to the website.
+      */
+
+      document.body.appendChild(
+        rocket
+      );
+
+
+      /*
+        Remove rocket when its animation
+        has finished.
+      */
+
+      setTimeout(
+        function () {
+
+          rocket.remove();
+
+        },
+
+        duration * 1000 +
+        1000
+      );
+
+    }
+
+
+
+    /* ===================================== */
+    /* 🚀 RANDOM LAUNCH LOOP */
+    /* ===================================== */
+
+    function rocketLoop() {
+
+      launchRandomRocket();
+
+
+      /*
+        Next launch occurs randomly
+        between about 1.7 and 4.7 seconds.
+      */
+
+      const nextLaunch =
+        1700 +
+        Math.random() * 3000;
+
+
+      window.orbitRocketTimer =
+        setTimeout(
+          rocketLoop,
+          nextLaunch
+        );
+
+    }
+
+
+
+    /* ===================================== */
+    /* START ROCKET SYSTEM */
+    /* ===================================== */
+
+    window.addEventListener(
+      "load",
+      function () {
+
+        /*
+          First rocket appears shortly
+          after the website loads.
+        */
+
+        setTimeout(
+          rocketLoop,
+          900
+        );
+
+      }
+    );
+
+
+
+    /* ===================================== */
+    /* PREVENT IMAGE DRAGGING */
+    /* ===================================== */
 
     document
-      .getElementById("siteImage")
+      .getElementById(
+        "siteImage"
+      )
       .addEventListener(
         "dragstart",
         function (event) {
