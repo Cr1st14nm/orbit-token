@@ -524,7 +524,110 @@
   </div>
 
 
+function launchRandomRocket() {
 
+  const rocket =
+    document.createElement("div");
+
+  rocket.className = "rocket-fx";
+
+  rocket.textContent = "🚀";
+
+
+  /*
+    posição horizontal aleatória
+  */
+
+  rocket.style.left =
+    Math.random() * 95 + "vw";
+
+
+  /*
+    tamanhos diferentes
+  */
+
+  const size =
+    25 + Math.random() * 55;
+
+  rocket.style.fontSize =
+    size + "px";
+
+
+  /*
+    velocidade aleatória
+  */
+
+  const duration =
+    5 + Math.random() * 8;
+
+  rocket.style.animationDuration =
+    duration + "s";
+
+
+  /*
+    pequena inclinação aleatória
+  */
+
+  rocket.style.marginLeft =
+    Math.random() * 80 - 40 + "px";
+
+
+  document.body.appendChild(
+    rocket
+  );
+
+
+  /*
+    remove depois da animação
+  */
+
+  setTimeout(function () {
+
+    rocket.remove();
+
+  }, duration * 1000 + 500);
+
+}
+
+
+/*
+  lança foguetes continuamente
+  em intervalos aleatórios
+*/
+
+function rocketLoop() {
+
+  launchRandomRocket();
+
+
+  const nextLaunch =
+    1800 +
+    Math.random() * 4200;
+
+
+  setTimeout(
+    rocketLoop,
+    nextLaunch
+  );
+
+}
+
+
+/*
+  começa depois que o site carregar
+*/
+
+window.addEventListener(
+  "load",
+  function () {
+
+    setTimeout(
+      rocketLoop,
+      1200
+    );
+
+  }
+);
   <script>
 
     /*
