@@ -390,6 +390,17 @@
 
     }
 
+
+    /* LIQUIDITY LIVE */
+    .liquidity-live{position:fixed;right:18px;bottom:18px;z-index:900;width:min(360px,calc(100vw - 36px));padding:14px;border:1px solid rgba(66,223,255,.8);border-radius:14px;background:rgba(2,6,17,.94);color:#fff;font-family:Arial,Helvetica,sans-serif;line-height:1.35;box-shadow:0 0 28px rgba(31,169,255,.28);backdrop-filter:blur(8px)}
+    .liquidity-title{color:#5cff85;font-size:15px;font-weight:800;letter-spacing:.04em}
+    .liquidity-pair{margin-top:4px;font-size:13px;font-weight:700}
+    .liquidity-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .liquidity-actions a{flex:1 1 95px;padding:9px 10px;border:1px solid #2c7dff;border-radius:8px;color:#fff;background:#0755d9;text-align:center;text-decoration:none;font-size:11px;font-weight:800}
+    .trading-alert{margin-top:10px;color:#cbd8f4;font-size:11px}
+    .trading-alert strong{color:#ffd84d}
+    @media(max-width:700px){.liquidity-live{right:10px;bottom:10px;width:calc(100vw - 20px)}}
+
   </style>
 </head>
 
@@ -700,6 +711,19 @@
 
   </div>
 
+
+
+  <!-- OFFICIAL LIQUIDITY / TRADING -->
+  <aside class="liquidity-live" aria-label="ORBIT official liquidity">
+    <div class="liquidity-title">🟢 LIQUIDITY LIVE</div>
+    <div class="liquidity-pair">WETH / ORBIT · Uniswap V2</div>
+    <div class="liquidity-actions">
+      <a href="https://app.uniswap.org/" target="_blank" rel="noopener noreferrer">BUY ORBIT</a>
+      <a href="https://robinhoodchain.blockscout.com/token/0x6b4C4b2a00E48FF522A65b56e84766B75Bb52458" target="_blank" rel="noopener noreferrer">VIEW POOL</a>
+      <a href="https://robinhoodchain.blockscout.com/address/0x3D42d61616EA2E48CA4Bd6a9e15BC443d1F76dE4" target="_blank" rel="noopener noreferrer">VERIFY CONTRACT</a>
+    </div>
+    <div class="trading-alert"><strong>🚀 SPACE TRADING ALERT</strong><br>Crypto markets can experience high volatility. Trade responsibly, verify the official ORBIT contract and always DYOR. 🐕‍🚀</div>
+  </aside>
 
   <div
     id="message"
